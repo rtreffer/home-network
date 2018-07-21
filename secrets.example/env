@@ -1,0 +1,8 @@
+# secret environment variables
+root_shadow='root:.........:16831:0:99999:7:::'
+wifi_dummy_key='???'
+wifi_80211r_macs='00:de:ad:be:ef:00 ff:de:ad:be:ef:ff'
+wifi_80211r_pass='???'
+ospf_pass='???'
+telekom_user='???'
+telekom_pass='???'

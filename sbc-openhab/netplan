@@ -1,0 +1,11 @@
+---
+network:
+  version: 2
+  ethernets:
+    ${node_interface}:
+      addresses:
+        - ${node_ip}/24
+      gateway4: 192.168.2.1
+      nameservers:
+        search: [ "home.measite.de", "local" ]
+        addresses: [ "192.168.2.7" ]

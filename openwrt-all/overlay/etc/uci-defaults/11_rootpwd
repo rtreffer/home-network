@@ -1,0 +1,5 @@
+#!/bin/sh
+
+source /etc/secrets/env
+
+sed -i "s;^root.*;${root_shadow};" /etc/shadow

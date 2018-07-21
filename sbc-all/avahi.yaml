@@ -1,0 +1,6 @@
+---
+packages:
+  - avahi-daemon
+  - avahi-utils
+runcmd:
+  - [ systemctl, restart, avahi-daemon ]

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/etc/init.d/firewall stop
+rm /etc/rc.d/S19firewall

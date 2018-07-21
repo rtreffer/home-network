@@ -1,0 +1,39 @@
+#!/bin/sh
+
+cat <<-EOF >/etc/config/firewall
+config defaults
+        option input 'ACCEPT'
+        option output 'ACCEPT'
+        option forward 'DROP'
+        option flow_offloading '1'
+
+config include
+        option path '/etc/firewall.user'
+
+config zone
+        option input 'ACCEPT'
+        option forward 'ACCEPT'
+        option output 'ACCEPT'
+        option name 'lan'
+        option network 'lan'
+
+config redirect
+        option enabled '1'
+
+config zone
+        option output 'ACCEPT'
+        option name 'wan'
+        option input 'DROP'
+        option forward 'DROP'
+        option masq '1'
+        option mtu_fix '1'
+        option network 'wan wan6 wan_iptv'
+
+config forwarding
+        option dest 'wan'
+        option src 'lan'
+EOF
+
+uci commit firewall
+
+exit 0

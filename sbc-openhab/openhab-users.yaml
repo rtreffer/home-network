@@ -1,0 +1,3 @@
+runcmd:
+  - [ usermod, --append, --groups, openhab, deploy ]
+  - [ usermod, --append, --groups, openhab, rtreffer ]

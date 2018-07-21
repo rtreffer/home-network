@@ -1,0 +1,8 @@
+---
+ntp:
+  enabled: true
+  pools: [ "de.pool.ntp.org", "pool.ntp.org" ]
+  ntp_client: systemd-timesyncd
+bootcmd:
+  - [ "timedatectl", "set-ntp", "1" ]
+  - [ "sleep", "10" ]

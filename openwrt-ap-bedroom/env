@@ -1,0 +1,2 @@
+PACKAGES=wpad bind-server -dnsmasq -odhcpd
+NODE=ap-bedroom

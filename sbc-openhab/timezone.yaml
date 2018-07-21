@@ -1,0 +1,3 @@
+bootcmd:
+  - [ln, -s, -f, /usr/share/zoneinfo/Europe/Berlin, /etc/localtime]
+  - [bash, -c, "echo Europe/Berlin > /etc/timezone" ]

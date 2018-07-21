@@ -1,0 +1,2 @@
+PACKAGES=luci-app-upnp -hostapd -hostapd-common -iw -kmod-ath9k -kmod-ath9k-common -kmod-cfg80211 -kmod-mac80211 -dsl-vrx200-firmware-xdsl-a -dsl-vrx200-firmware-xdsl-b-patch
+NODE=gateway

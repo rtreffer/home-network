@@ -1,0 +1,10 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  set wireless.radio0_Strahlenkanone=wifi-iface
+  set wireless.radio0_Strahlenkanone.mode=sta
+  set wireless.radio0_Strahlenkanone.wds=1
+  commit wireless
+EOF
+
+exit 0

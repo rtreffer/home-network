@@ -1,0 +1,47 @@
+#!/bin/sh
+
+source /etc/secrets/env
+
+add_wireless() {
+  radio=$1
+  ssid=$2
+  pass=$3
+  radioid=$(echo ${radio}|tr -d 'a-z')
+  mac=$(cat /sys/class/ieee80211/phy${radioid}/addresses)
+  plainmac=$(echo ${mac}|tr -d ':')
+uci -q batch <<-EOF >/dev/null
+set wireless.${radio}_${ssid}=wifi-iface
+set wireless.${radio}_${ssid}.device=${radio}
+set wireless.${radio}_${ssid}.network=lan
+set wireless.${radio}_${ssid}.mode=ap
+set wireless.${radio}_${ssid}.encryption=psk-mixed
+set wireless.${radio}_${ssid}.ssid=${ssid}
+set wireless.${radio}_${ssid}.key=${pass}
+EOF
+#set wireless.${radio}_${ssid}.doth=1
+#set wireless.${radio}_${ssid}.ieee80211w=1
+#
+#set wireless.${radio}_${ssid}.ieee80211r=1
+#set wireless.${radio}_${ssid}.pmk_r1_push=1
+#set wireless.${radio}_${ssid}.mobility_domain=${wifi_mobdomain}
+#set wireless.${radio}_${ssid}.nasid=${plainmac}
+#set wireless.${radio}_${ssid}.r1_key_holder=${plainmac}
+#EOF
+
+  for other in ${wifi_80211r_macs}; do
+    plainother=$(echo ${other}|tr -d ':')
+    uci add_list wireless.${radio}_${ssid}.r0kh=${other},${plainother},${wifi_80211r_pass}
+    uci add_list wireless.${radio}_${ssid}.r1kh=${other},${other},${wifi_80211r_pass}
+  done
+
+  uci commit wireless
+}
+
+add_wireless radio0 nina ${wifi_nina_key}
+add_wireless radio1 nina ${wifi_nina_key}
+add_wireless radio0 Strahlenkanone ${wifi_strahlenkanone_key}
+add_wireless radio1 Strahlenkanone ${wifi_strahlenkanone_key}
+add_wireless radio0 echelon ${wifi_echelon_key}
+add_wireless radio1 echelon ${wifi_echelon_key}
+
+exit 0

@@ -1,0 +1,52 @@
+# Registry of devices
+
+Add new devices to this list as needed.
+Not adding a device will later on cause issues.
+
+# IP registry
+
+- 192.168.2.0/24 - main network
+  - 192.168.2.[0-9] - network devices (assigned)
+    - 192.168.2.1 - gateway, dhcp
+    - 192.168.2.2 - core switch
+    - 192.168.2.5 - ap-bedroom, dns1
+    - 192.168.2.6 - ap-work, dns2
+    - 192.168.2.7 - ap-living, dns3
+  - 192.168.2.[12][0-9]: static machine ips (assigned)
+    - 192.168.2.11 - pvr.local
+    - 192.168.2.15 - vmhost.local
+    - 192.168.2.29 - openhab.local
+  - 192.168.2.[3456][0-9]: IOT / dhcp static lease
+    - 192.168.2.30 - hue-gateway
+    - 192.168.2.31 - power-aquarien
+    - 192.168.2.32 - power-tv-a
+    - 192.168.2.33 - power-tv-b
+    - 192.168.2.34 - power-outdoor
+    - 192.168.2.35 - power-kuehlschrank
+    - 192.168.2.36 - power-3d-druck
+    - 192.168.2.49 - harmonyhub
+    - 192.168.2.50 - chromecast-living
+  - 192.168.2.[89][0-9]: DHCP/static lease
+    - 192.168.2.80 - firetv
+    - 192.168.2.81 - printer
+  - 192.168.2.100-254: DHCP/dynamic
+
+# MAC registry
+
+b4:b5:2f:f5:86:7c HP M175nw Laserprinter
+
+f0:27:2d:18:1a:6c FireTV
+
+00:17:88:0a:68:4a Philips Hue Gatway (1st gen)
+00:17:88:a6:55:32 Philips Hue Gateway (3rd gen)
+
+c8:db:26:07:09:c2 Logitech Harmony
+
+54:60:09:fc:0f:68 Chromecast Audio
+
+ac:84:c6:59:ca:9f TP-Link HS110 WiFi Smart Plug
+50:c7:bf:0b:90:e8 TP-Link HS110 WiFi Smart Plug
+50:c7:bf:0b:88:3b TP-Link HS110 WiFi Smart Plug
+50:c7:bf:0b:8b:b0 TP-Link HS110 WiFi Smart Plug
+50:c7:bf:0b:8d:27 TP-Link HS110 WiFi Smart Plug
+50:c7:bf:28:bd:d9 TP-Link HS110 WiFi Smart Plug

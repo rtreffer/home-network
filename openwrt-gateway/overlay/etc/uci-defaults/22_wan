@@ -1,0 +1,42 @@
+#!/bin/sh
+
+source /etc/secrets/env
+
+uci -q batch <<-EOF >/dev/null
+  delete network.wan
+  delete network.wan6
+
+  set network.dsl.annex=b
+  set network.dsl.tone=b
+  set network.dsl.xfer_mode=ptm
+  set network.dsl.line_mode=vdsl
+  set network.dsl.ds_snr_offset='-30'
+  set network.dsl.firmware=/lib/firmware/vr9-b-dsl.bin
+
+  set network.wan_dev.mtu=1508
+
+  set network.wan=interface
+  set network.wan.ifname='dsl0.7'
+  set network.wan.proto='pppoe'
+  set network.wan.ipv6='1'
+  set network.wan.username='${telekom_user}'
+  set network.wan.password='${telekom_pass}'
+  set network.wan.keepalive=10
+  set network.wan.mtu=1500
+
+  set network.wan_iptv=interface
+  set network.wan_iptv.ifname='dsl0.8'
+  set network.wan_iptv.proto='dhcp'
+  set network.wan_iptv=1500
+
+  set network.wan6=interface
+  set network.wan6.ifname='@wan'
+  set network.wan6.proto='dhcpv6'
+  set network.wan6.reqprefix='56'
+
+  set network.lan.ip6assign=56
+
+  commit network
+EOF
+
+exit 0

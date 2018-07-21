@@ -1,0 +1,18 @@
+---
+write_files:
+  - path: "/etc/systemd/network/{{ .node_interface }}.network"
+    owner: "root:root"
+    permissions: '0644'
+    content: |
+      [Match]
+      Name={{ .node_interface }}*
+      [Network]
+      LLDP=yes
+      EmitLLDP=yes
+      IPForward=yes
+      DNS=192.168.2.7
+      Address={{ .node_ip }}/24
+      Gateway=192.168.2.1
+bootcmd:
+  - [ systemctl, daemon-reload ]
+  - [ systemctl, restart, systemd-networkd ]

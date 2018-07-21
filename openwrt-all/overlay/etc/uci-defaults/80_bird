@@ -1,0 +1,59 @@
+#!/bin/sh
+
+addr=$(uci get network.lan.ipaddr)
+source /etc/secrets/env
+
+cat > /etc/bird.conf <<-EOF
+log syslog all;
+
+router id ${addr};
+
+protocol device {
+        scan time 10;
+}
+
+protocol kernel {
+        learn;
+        export all;
+        import all;
+        debug all;
+        scan time 10;
+}
+
+protocol static {
+        export all;
+}
+
+protocol direct {
+        export all;
+}
+
+protocol ospf {
+        import all;
+        export all;
+        debug all;
+
+        area 0 {
+                interface "br-lan" {
+                        cost 10;
+                        type broadcast;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                };
+
+                interface "wifi*" {
+                        cost 50;
+                        type broadcast;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                };
+
+                interface "*" {
+                        cost 100;
+                        stub;
+                };
+        };
+}
+EOF
+
+/etc/init.d/bird4 restart

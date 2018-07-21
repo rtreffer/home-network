@@ -1,0 +1,16 @@
+---
+write_files:
+  - path: /etc/systemd/network/en.network
+    owner: root:root
+    permissions: '0600'
+    content: |
+      [Match]
+      Name=en*
+      [Network]
+      DHCP=ipv4
+      LLDP=yes
+      EmitLLDP=yes
+      IPForward=yes
+bootcmd:
+  - [ systemctl, daemon-reload ]
+  - [ systemctl, restart, systemd-networkd ]
