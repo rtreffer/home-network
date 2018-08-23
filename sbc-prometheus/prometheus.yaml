@@ -1,0 +1,74 @@
+---
+packages:
+  - prometheus
+write_files:
+  - path: /var/lib/prometheus/node-exporter/hue_meta.prom
+    owner: root:root
+    permissions: '0644'
+    content: |
+      # Power consumption per model
+      # hue
+      hue_light_consumption_watt{model="LLC007"} 8.0
+      hue_light_consumption_watt{model="LCT001"} 8.5
+      hue_light_consumption_watt{model="LCT001"} 10.0
+      # innr
+      hue_light_consumption_watt{model="RB 165"} 9.0
+      # IKEA
+      hue_light_consumption_watt{model="TRADFRI bulb E27 WS opal 980lm"} 12.0
+      hue_light_consumption_watt{model="TRADFRI bulb E27 opal 1000lm"} 12.5
+  - path: /etc/prometheus/prometheus.yaml
+    owner: root:root
+    permissions: '0644'
+    content: |
+      global:
+        scrape_interval:     15s
+        evaluation_interval: 15s
+      rule_files:
+        - /etc/prometheus/rules-*.yml
+      scrape_configs:
+      - job_name: 'prometheus'
+        static_configs:
+        - targets: ['localhost:9090']
+      - job_name: 'network-node'
+        static_configs:
+        - targets:
+          - '192.168.2.1:9100'
+          - '192.168.2.5:9100'
+          - '192.168.2.6:9100'
+          - '192.168.2.7:9100'
+      - job_name: 'node'
+        static_configs:
+        - targets:
+          - '192.168.2.15:9100'
+          - '192.168.2.28:9100'
+          - '192.168.2.29:9100'
+      - job_name: 'hs110'
+        metrics_path: '/hs110'
+        static_configs:
+        - targets:
+          - '192.168.2.31'
+          - '192.168.2.32'
+          - '192.168.2.33'
+          - '192.168.2.34'
+          - '192.168.2.35'
+          - '192.168.2.36'
+          - '192.168.2.37'
+          - '192.168.2.38'
+        relabel_configs:
+        - source_labels: [__address__]
+          separator: ;
+          regex: (.*)
+          target_label: __param_target
+          replacement: ${1}
+          action: replace
+        - source_labels: [__param_target]
+          separator: ;
+          regex: (.*)
+          target_label: instance
+          replacement: ${1}
+          action: replace
+        - separator: ;
+          regex: .*
+          target_label: __address__
+          replacement: localhost:12040
+          action: replace
