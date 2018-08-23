@@ -1,0 +1,4 @@
+#!/bin/sh
+
+uci add_list 'umdms.@umdns[0].network'='wan'
+uci commit umdns

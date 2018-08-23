@@ -1,0 +1,23 @@
+#!/bin/sh
+
+source /etc/secrets/env
+
+uci -q batch <<-EOF >/dev/null
+set wireless.radio0_strahlenkanone=wifi-iface
+set wireless.radio0_strahlenkanone.device=radio0
+set wireless.radio0_strahlenkanone.network=lan
+set wireless.radio0_strahlenkanone.mode=sta
+set wireless.radio0_strahlenkanone.encryption=psk-mixed
+set wireless.radio0_strahlenkanone.ssid=Strahlenkanone
+set wireless.radio0_strahlenkanone.key=${wifi_strahlenkanone_key}
+set wireless.radio0_strahlenkanone.network=wan
+EOF
+
+uci -q batch <<-EOF >/dev/null
+set network.wan.ifname=wlan0
+EOF
+
+uci commit wireless
+uci commit network
+
+exit 0
