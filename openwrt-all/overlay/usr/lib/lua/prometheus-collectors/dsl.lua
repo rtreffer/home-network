@@ -1,8 +1,9 @@
+--!/usr/bin/lua
+
 local function scrape()
-	local has_dsl = fs.access("/etc/init.d/dsl_control")
+        local fs = require "nixio.fs"
+	local has_dsl = fs.access("/etc/init.d/dsl_control", "x")
 	if has_dsl then
-		local dsl_info = metric("dsl_info","gauge")
-		local dsl_line_info = metric("dsl_line_info", "gauge")
 		local dsl_uptime = metric("dsl_uptime", "gauge")
 		local dsl_up = metric("dsl_up", "counter")
 		local dsl_data_rate_up = metric("dsl_data_rate_up", "gauge")
@@ -11,11 +12,21 @@ local function scrape()
 		local dsl_max_data_rate_down = metric("dsl_max_data_rate_down", "gauge")
 		local dsl_errors_total = metric("dsl_errors_total", "counter")
 		local dsl_error_seconds_total = metric("dsl_error_seconds_total", "counter")
+		local dsl_line_attenuation = metric("dsl_line_attenuation_db", "gauge")
+		local dsl_signal_attenuation = metric("dsl_signal_attenuation_db", "gauge")
+		local dsl_snr = metric("dsl_signal_to_noise_margin_db", "gauge")
+		local dsl_aggregated_transmit_power = metric("dsl_aggregated_transmit_power_db", "gauge")
 
-		local dsl_stat = luci.sys.exec("/etc/init.d/dsl_control lucistat")
+                local sys  = require "luci.sys"
+		local dsl_func_data = sys.exec("/etc/init.d/dsl_control lucistat")
+		local dsl_func = loadstring(dsl_func_data)
+		if not dsl_func then
+			return
+		end
+		local dsl_stat = dsl_func()
 
 		-- dsl hardware/firmware information
-		dsl_info({
+		metric("dsl_info", "gauge", {
 			atuc_vendor_id = dsl_stat.atuc_vendor_id,
 			atuc_system_vendor_id = dsl_stat.atuc_system_vendor_id,
 			chipset = dsl_stat.chipset,
@@ -24,7 +35,7 @@ local function scrape()
 		}, 1)
 
 		-- dsl line settings information
-		dsl_line_info({
+		metric("dsl_line_info", "gauge", {
 			xtse1   = dsl_stat.xtse1,
 			xtse2   = dsl_stat.xtse2,
 			xtse3   = dsl_stat.xtse3,
@@ -39,7 +50,7 @@ local function scrape()
 		}, 1)
 
 		-- dsl up is 1 if the line is up and running
-		if dls_stat.line_state == "UP" then
+		if dsl_stat.line_state == "UP" then
 			dsl_up({}, 1)
 		else
 			dsl_up({}, 0)
@@ -47,6 +58,16 @@ local function scrape()
 
 		-- dsl line status data
 		dsl_uptime({}, dsl_stat.line_uptime)
+
+                -- dsl db measurements
+                dsl_line_attenuation({direction="up"}, dsl_stat.line_attenuation_up)
+		dsl_line_attenuation({direction="down"}, dsl_stat.line_attenuation_down)
+		dsl_signal_attenuation({direction="up"}, dsl_stat.signal_attenuation_up)
+		dsl_signal_attenuation({direction="down"}, dsl_stat.signal_attenuation_down)
+		dsl_snr({direction="up"}, dsl_stat.noise_margin_up)
+		dsl_snr({direction="down"}, dsl_stat.noise_margin_down)
+		dsl_aggregated_transmit_power({direction="up"}, dsl_stat.actatp_up)
+		dsl_aggregated_transmit_power({direction="down"}, dsl_stat.actatp_down)		
 
 		-- dsl performance data
 		dsl_data_rate_up({}, dsl_stat.data_rate_up)
@@ -67,7 +88,10 @@ local function scrape()
 		dsl_error_seconds_total({err="unavailable",loc="far"}, dsl_stat.errors_uas_far)
 		dsl_errors_total({err="header error code error",loc="near"}, dsl_stat.errors_hec_near)
 		dsl_errors_total({err="header error code error",loc="far"}, dsl_stat.errors_hec_far)
-		dsl_errors_total({err="",loc="near"},0)
+                dsl_errors_total({err="non pre-emptive crc error",loc="near"}, dsl_stat.errors_crc_p_near)
+		dsl_errors_total({err="non pre-emptive crc error",loc="far"}, dsl_stat.errors_crc_p_far)
+		dsl_errors_total({err="pre-emptive crc error",loc="near"}, dsl_stat.errors_crcp_p_near)
+		dsl_errors_total({err="pre-emptive crc error",loc="far"}, dsl_stat.errors_crcp_p_far)
 	end
 end
 
