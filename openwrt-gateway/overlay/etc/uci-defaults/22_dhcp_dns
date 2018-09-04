@@ -35,7 +35,9 @@ static_lease 'power-kuehlschrank' '50:c7:bf:0b:8d:27' '192.168.2.35'
 static_lease 'power-3d-druck'     '50:c7:bf:28:bd:d9' '192.168.2.36'
 static_lease 'power-tv-c'         'ac:84:c6:28:fd:53' '192.168.2.37'
 static_lease 'power-tv-d'         'ac:84:c6:29:16:34' '192.168.2.38'
+static_lease 'power-washing'      'ac:84:c6:5d:9d:3d' '192.168.2.39'
 
+static_lease 'sky'                 '7c:2f:80:b1:c3:1c' '192.168.2.48'
 static_lease 'harmonyhub'          'c8:db:26:07:09:c2' '192.168.2.49'
 static_lease 'chromecast-living'   '54:60:09:fc:0f:68' '192.168.2.50'
 static_lease 'chromecast-balcony'  '54:60:09:d8:e2:1c' '192.168.2.51'
@@ -43,5 +45,10 @@ static_lease 'chromecast-bathroom' '54:60:09:e7:69:4e' '192.168.2.52'
 
 static_lease 'firetv'             'f0:27:2d:18:1a:6c' '192.168.2.80'
 static_lease 'printer'            'b4:b5:2f:f5:86:7c' '192.168.2.81'
+static_lease 'voip'               '7c:2f:80:b1:c3:1c' '192.168.2.82'
+static_lease 'phone'              '00:0a:e2:04:0a:b9' '192.168.2.83'
+
+static_lease 'nina-iphone'        '34:ab:37:ed:48:69' '192.168.2.90'
+static_lease 'rene-android'       '94:65:2d:a5:9c:44' '192.168.2.91'
 
 exit 0

@@ -18,7 +18,7 @@ uci -q batch <<-EOF >/dev/null
   set network.wan=interface
   set network.wan.ifname='dsl0.7'
   set network.wan.proto='pppoe'
-  set network.wan.ipv6='1'
+  set network.wan.ipv6='auto'
   set network.wan.username='${telekom_user}'
   set network.wan.password='${telekom_pass}'
   set network.wan.keepalive=10
@@ -27,7 +27,8 @@ uci -q batch <<-EOF >/dev/null
   set network.wan_iptv=interface
   set network.wan_iptv.ifname='dsl0.8'
   set network.wan_iptv.proto='dhcp'
-  set network.wan_iptv=1500
+  set network.wan_iptv.mtu=1500
+  set network.wan_iptv.ipv6='auto'
 
   set network.wan6=interface
   set network.wan6.ifname='@wan'

@@ -59,6 +59,7 @@ packages:
   - openjdk-8-jre
   - openhab2
   - openhab2-addons
+  - iputils-arping
 runcmd:
   - [ systemctl, enable, openhab2 ]
   - [ systemctl, start, openhab2 ]
