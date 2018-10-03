@@ -1,12 +1,12 @@
 #!/bin/sh
 
 uci -q batch <<-EOF >/dev/null
-  set system.@system[0].hostname='gateway'
+  set system.@system[0].hostname='dsl'
   commit system
 EOF
 
 uci -q batch <<-EOF >/dev/null
-  set network.lan.ipaddr='192.168.2.1'
+  set network.lan.ipaddr='192.168.2.2'
   commit network
 EOF
 

@@ -7,8 +7,8 @@ Not adding a device will later on cause issues.
 
 - 192.168.2.0/24 - main network
   - 192.168.2.[0-9] - network devices (assigned)
-    - 192.168.2.1 - gateway, dhcp
-    - 192.168.2.2 - core switch (out of order)
+    - 192.168.2.1 - router (dhcp, vpn, ...)
+    - 192.168.2.2 - dsl modem
     - 192.168.2.5 - ap-bedroom, dns3
     - 192.168.2.6 - ap-work, dns2
     - 192.168.2.7 - ap-living, dns1

@@ -1,0 +1,2 @@
+PACKAGES=luci-app-upnp luci-app-wireguard luci-app-ddns ddns-scripts_route53-v1 ca-certificates ca-bundle
+NODE=router

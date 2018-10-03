@@ -1,0 +1,53 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  delete network.wan
+  delete network.wan6
+  delete network.@switch[0]
+  delete network.@switch_vlan[0]
+
+  set network.wan_dev.mtu=1508
+
+  set network.switch=switch
+  set network.switch.name='switch0'
+  set network.switch.reset='1'
+  set network.switch.enable_vlan='1'
+
+  set network.switch_lan=switch_vlan
+  set network.switch_lan.device='switch0'
+  set network.switch_lan.vlan='1'
+  set network.switch_lan.ports='0 2 4 6t'
+
+  set network.switch_wan_7=switch_vlan
+  set network.switch_wan_7.device='switch0'
+  set network.switch_wan_7.vlan='2'
+  set network.switch_wan_7.vid='7'
+  set network.switch_wan_7.ports='5t 6t'
+
+  set network.switch_wan_8=switch_vlan
+  set network.switch_wan_8.device='switch0'
+  set network.switch_wan_8.vlan='3'
+  set network.switch_wan_8.vid='8'
+  set network.switch_wan_8.ports='5t 6t'
+
+  set network.wan_7=interface
+  set network.wan_7.type='bridge'
+  set network.wan_7.ifname='eth0.7 dsl0.7'
+  set network.wan_7.proto='none'
+
+  set network.wan_8=interface
+  set network.wan_8.type='bridge'
+  set network.wan_8.ifname='eth0.8 dsl0.8'
+  set network.wan_8.proto='none'
+
+  set network.dsl.annex=b
+  set network.dsl.tone=b
+  set network.dsl.xfer_mode=ptm
+  set network.dsl.line_mode=vdsl
+  set network.dsl.ds_snr_offset='-30'
+  set network.dsl.firmware=/lib/firmware/vr9-b-dsl.bin
+
+  commit network
+EOF
+
+exit 0

@@ -1,26 +1,26 @@
 #!/bin/sh
 
 cat <<-EOF >/etc/config/firewall
-config defaults
+config defaults 'defaults'
         option input 'ACCEPT'
         option output 'ACCEPT'
         option forward 'DROP'
         option flow_offloading '1'
 
-config include
+config include 'user'
         option path '/etc/firewall.user'
 
-config zone
+config zone 'lan'
         option input 'ACCEPT'
         option forward 'ACCEPT'
         option output 'ACCEPT'
         option name 'lan'
         option network 'lan'
 
-config redirect
+config redirect 'redirect'
         option enabled '1'
 
-config zone
+config zone 'wan'
         option output 'ACCEPT'
         option name 'wan'
         option input 'DROP'
@@ -29,9 +29,25 @@ config zone
         option mtu_fix '1'
         option network 'wan wan6 wan_iptv'
 
-config forwarding
+config forwarding 'lan2wan'
         option dest 'wan'
         option src 'lan'
+
+config rule 'ssh'
+	option enabled 1
+	option name 'ssh'
+	option proto 'tcp udp'
+	option dest_port 22
+	option src 'wan'
+	option target 'ACCEPT'
+
+config rule 'wireguard'
+        option enabled 1
+        option name 'wireguard'
+        option proto 'tcp udp'
+        option dest_port 843
+        option src 'wan'
+        option target 'ACCEPT'
 EOF
 
 uci commit firewall

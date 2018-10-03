@@ -1,0 +1,13 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  set system.@system[0].hostname='router'
+  commit system
+EOF
+
+uci -q batch <<-EOF >/dev/null
+  set network.lan.ipaddr='192.168.2.1'
+  commit network
+EOF
+
+exit 0
