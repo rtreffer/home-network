@@ -54,11 +54,19 @@ apt:
         ebdXE76HYEfqIn9dVKV4Ko1SXZG85ogEd0g=
         =Ysxm
         -----END PGP PUBLIC KEY BLOCK-----
+write_files:
+  - path: /etc/rc.local
+    permissions: '0755'
+    owner: 'root:root'
+    content: |
+      #!/bin/bash
+      iptables -t nat -A OUTPUT -o lo -p tcp --dport 80 -j REDIRECT --to-port 8080
+      iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
+      iptables -t nat -A PREROUTING -p udp --dport 67 -j REDIRECT --to-ports 6767
 packages:
   - openjdk-8-jdk
   - openjdk-8-jre
   - openhab2
-  - openhab2-addons
   - iputils-arping
 runcmd:
   - [ systemctl, enable, openhab2 ]
