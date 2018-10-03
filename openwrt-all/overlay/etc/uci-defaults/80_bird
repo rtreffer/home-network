@@ -55,6 +55,13 @@ protocol ospf {
                         authentication cryptographic; password "${ospf_pass}";
                 };
 
+                interface "wg*" {
+                        cost 75;
+                        type broadcast;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                };
+
                 interface "*" {
                         cost 100;
                         stub;
