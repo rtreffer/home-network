@@ -27,12 +27,12 @@ EOF
 #set wireless.${radio}_${ssid}.nasid=${plainmac}
 #set wireless.${radio}_${ssid}.r1_key_holder=${plainmac}
 #EOF
-
-  for other in ${wifi_80211r_macs}; do
-    plainother=$(echo ${other}|tr -d ':')
-    uci add_list wireless.${radio}_${ssid}.r0kh=${other},${plainother},${wifi_80211r_pass}
-    uci add_list wireless.${radio}_${ssid}.r1kh=${other},${other},${wifi_80211r_pass}
-  done
+#
+#  for other in ${wifi_80211r_macs}; do
+#    plainother=$(echo ${other}|tr -d ':')
+#    uci add_list wireless.${radio}_${ssid}.r0kh=${other},${plainother},${wifi_80211r_pass}
+#    uci add_list wireless.${radio}_${ssid}.r1kh=${other},${other},${wifi_80211r_pass}
+#  done
 
   uci commit wireless
 }
