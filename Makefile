@@ -2,7 +2,8 @@ include build/sbc.mk
 include build/openwrt.mk
 
 # sbc nodes
-$(eval $(call build-sbc-node,openhab,tinkerboard,armbian-beta-bionic))
+#$(eval $(call build-sbc-node,openhab,tinkerboard,armbian-beta-bionic))
+$(eval $(call build-sbc-node,openhab,rpi3,ubuntu-bionic-arm64))
 $(eval $(call build-sbc-node,prometheus,rpi3,ubuntu-bionic-arm64))
 
 # openwrt build container
