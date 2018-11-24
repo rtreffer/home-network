@@ -1,8 +1,8 @@
 #!/bin/sh
 
 uci -q batch <<-EOF >/dev/null
-  set dhcp.@dnsmasq[0].domain=home.measite.de
-  set dhcp.@dnsmasq[0].local=/home.measite.de/
+  set dhcp.@dnsmasq[0].domain=dhcp.home.measite.de
+  set dhcp.@dnsmasq[0].local=/dhcp.home.measite.de/
   set dhcp.lan.start=100
   set dhcp.lan.limit=254
   set dhcp.lan.leasetime=24h
