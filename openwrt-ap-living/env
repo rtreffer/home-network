@@ -1,2 +1,2 @@
-PACKAGES=wpad bind-server watchcat -dnsmasq -odhcpd
+PACKAGES=wpad -bind-server unbound watchcat -dnsmasq -odhcpd
 NODE=ap-living
