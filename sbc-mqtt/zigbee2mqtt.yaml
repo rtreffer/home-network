@@ -1,3 +1,4 @@
+---
 write_files:
   - path: /usr/local/sbin/install-zigbee2mqtt
     permissions: '0755'

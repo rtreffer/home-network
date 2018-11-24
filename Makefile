@@ -5,6 +5,7 @@ include build/openwrt.mk
 #$(eval $(call build-sbc-node,openhab,tinkerboard,armbian-beta-bionic))
 $(eval $(call build-sbc-node,openhab,rpi3,ubuntu-bionic-arm64))
 $(eval $(call build-sbc-node,prometheus,rpi3,ubuntu-bionic-arm64))
+$(eval $(call build-sbc-node,mqtt,rpi3,ubuntu-cosmic-arm64))
 
 # openwrt build container
 $(eval $(call openwrt-build-container,18.06.1,ar71xx,generic))
