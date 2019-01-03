@@ -16,6 +16,7 @@ Not adding a device will later on cause issues.
   - 192.168.2.[12][0-9]: static machine ips (assigned)
     - 192.168.2.11 - pvr.local
     - 192.168.2.15 - vmhost.local
+    - 192.168.2.26 - mqtt.local
     - 192.168.2.27 - RaspberryMatic
     - 192.168.2.28 - prometheus.local
     - 192.168.2.29 - openhab.local
@@ -30,6 +31,9 @@ Not adding a device will later on cause issues.
     - 192.168.2.37 - power-tv-c
     - 192.168.2.38 - power-tv-d
     - 192.168.2.39 - power-washing
+    - 192.168.2.40 - power-dishwash
+    - 192.168.2.41 - power-beer
+    - 192.168.2.42 - power-printer
     - 192.168.2.48 - sky receiver
     - 192.168.2.49 - harmonyhub
     - 192.168.2.50 - chromecast-living
@@ -62,9 +66,8 @@ Not adding a device will later on cause issues.
 
 b4:b5:2f:f5:86:7c HP M175nw Laserprinter
 
-f0:27:2d:18:1a:6c FireTV
+60:6d:3c:0b:b8:c4 FireTV Cube
 
-00:17:88:0a:68:4a Philips Hue Gatway (1st gen)
 00:17:88:a6:55:32 Philips Hue Gateway (3rd gen)
 
 c8:db:26:07:09:c2 Logitech Harmony
@@ -82,11 +85,18 @@ ac:84:c6:59:ca:9f TP-Link HS110 WiFi Smart Plug
 ac:84:c6:28:fd:53 TP-Link HS110 WiFi Smart Plug
 ac:84:c6:29:16:34 TP-Link HS110 WiFi Smart Plug
 ac:84:c6:5d:9d:3d TP-Link HS110 WiFi Smart Plug
+ac:84:c6:3b:b4:2f TP-Link HS110 WiFi Smart Plug
+ac:84:c6:3b:b1:35 TP-Link HS110 WiFi Smart Plug
+ac:84:c6:29:03:d9 TP-Link HS110 WiFi Smart Plug
 
 7c:2f:80:b1:c3:1c Gigaset N510-IP-PRO VoIP/DECT gateway
 00:0a:e2:04:0a:b9 AEG SMART64 Dect telephone
 
-7c:2f:80:b1:c3:1c sky receiver
-
 94:65:2d:a5:9c:44 Rene Oneplus 5
 34:ab:37:ed:48:69 Nina iPhone
+
+# MAC registry, removed
+
+7c:2f:80:b1:c3:1c sky receiver
+f0:27:2d:18:1a:6c FireTV
+00:17:88:0a:68:4a Philips Hue Gatway (1st gen)
