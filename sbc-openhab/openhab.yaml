@@ -66,8 +66,10 @@ write_files:
 packages:
   - openjdk-8-jdk
   - openjdk-8-jre
+  - librxtx-java
   - openhab2
   - iputils-arping
+  - iptables
 runcmd:
   - [ systemctl, enable, openhab2 ]
   - [ systemctl, start, openhab2 ]
