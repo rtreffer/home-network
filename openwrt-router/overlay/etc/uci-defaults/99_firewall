@@ -49,6 +49,25 @@ config rule 'wireguard'
         option dest_port 843
         option src 'wan'
         option target 'ACCEPT'
+
+# see https://openwrt.org/docs/guide-user/network/ipv6/start
+config rule
+	option target 'ACCEPT'
+	option src 'wan'
+	option proto 'udp'
+	option dest_port '547'
+	option name 'Allow DHCPv6 (546-to-547)'
+	option family 'ipv6'
+	option src_port '546'
+
+config rule
+        option target 'ACCEPT'
+        option src 'wan'
+        option proto 'udp'
+        option dest_port '546'
+        option name 'Allow DHCPv6 (547-to-546)'
+        option family 'ipv6'
+        option src_port '547'
 EOF
 
 uci commit firewall

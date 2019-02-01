@@ -6,6 +6,14 @@ uci -q batch <<-EOF >/dev/null
 EOF
 
 uci -q batch <<-EOF >/dev/null
+  set network.lan6=interface
+  set network.lan6.proto='dhcpv6'
+  set network.lan6.ifname='@lan'
+  set network.lan6.reqprefix='no'
+  commit network
+EOF
+
+uci -q batch <<-EOF >/dev/null
   set network.lan.ipaddr='192.168.2.6'
   commit network
 EOF
