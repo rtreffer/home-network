@@ -12,6 +12,7 @@ Not adding a device will later on cause issues.
     - 192.168.2.5 - ap-bedroom, dns3
     - 192.168.2.6 - ap-work, dns2
     - 192.168.2.7 - ap-living, dns1
+    - 192.168.2.8 - ap-guest
     - 192.168.2.9 - ffgateway
   - 192.168.2.[12][0-9]: static machine ips (assigned)
     - 192.168.2.11 - pvr.local

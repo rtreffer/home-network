@@ -37,6 +37,53 @@ EOF
   uci commit wireless
 }
 
+add_mesh() {
+  radio=$1
+  ssid=strahlenmesh
+  pass=$2
+  interface=mesh$(echo ${radio}|tr -d 'a-z')
+uci -q batch <<-EOF >/dev/null
+set wireless.${radio}_${ssid}=wifi-iface
+set wireless.${radio}_${ssid}.device=${radio}
+set wireless.${radio}_${ssid}.interface=${interface}
+set wireless.${radio}_${ssid}.network=nwi_${interface}
+set wireless.${radio}_${ssid}.mode=mesh
+set wireless.${radio}_${ssid}.mesh_fwding=0
+set wireless.${radio}_${ssid}.encryption=psk2+ccmp
+set wireless.${radio}_${ssid}.mesh_id=${ssid}
+set wireless.${radio}_${ssid}.key=${pass}
+set wireless.${radio}_${ssid}.sae_password=${pass}
+
+set network.nwi_${interface}=interface
+set network.nwi_${interface}.ifname=${interface}
+set network.nwi_${interface}.proto=batadv
+set network.nwi_${interface}.mesh=bat0
+
+set batman-adv.bat0.aggregated_ogms='1'
+set batman-adv.bat0.ap_isolation='0'
+set batman-adv.bat0.bonding='0'
+set batman-adv.bat0.fragmentation='0'
+set batman-adv.bat0.gw_mode='client'
+set batman-adv.bat0.gw_sel_class='20'
+set batman-adv.bat0.log_level='2'
+set batman-adv.bat0.orig_interval='1000'
+set batman-adv.bat0.bridge_loop_avoidance='1'
+set batman-adv.bat0.distributed_arp_table='1'
+set batman-adv.bat0.multicast_mode='1'
+set batman-adv.bat0.network_coding='0'
+set batman-adv.bat0.hop_penalty='30'
+set batman-adv.bat0.isolation_mark='0'
+set batman-adv.bat0.orig_interval='1000'
+EOF
+
+  uci commit wireless
+  uci commit batman-adv
+  uci commit network
+}
+
+add_mesh radio0 ${wifi_mesh_key}
+add_mesh radio1 ${wifi_mesh_key}
+
 add_wireless radio0 nina ${wifi_nina_key}
 add_wireless radio1 nina ${wifi_nina_key}
 add_wireless radio0 Strahlenkanone ${wifi_strahlenkanone_key}
