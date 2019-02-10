@@ -1,2 +1,2 @@
-PACKAGES=-dnsmasq -odhcpd unbound watchcat hostapd-openssl wpa-supplicant-mesh-openssl kmod-batman-adv batctl
+PACKAGES=-dnsmasq -odhcpd unbound luci-app-unbound watchcat hostapd-openssl wpa-supplicant-mesh-openssl kmod-batman-adv batctl
 NODE=ap-living
