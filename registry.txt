@@ -9,6 +9,7 @@ Not adding a device will later on cause issues.
   - 192.168.2.[0-9] - network devices (assigned)
     - 192.168.2.1 - router (dhcp, vpn, ...)
     - 192.168.2.2 - dsl modem
+    - 192.168.2.4 - ap-balcony
     - 192.168.2.5 - ap-bedroom, dns3
     - 192.168.2.6 - ap-work, dns2
     - 192.168.2.7 - ap-living, dns1
@@ -40,6 +41,7 @@ Not adding a device will later on cause issues.
     - 192.168.2.50 - chromecast-living
     - 192.168.2.51 - chromecast-balcony
     - 192.168.2.52 - chromecast-bathroom
+    - 192.168.2.60 - phonie (Phoniebox)
   - 192.168.2.[89][0-9]: DHCP/static lease
     - 192.168.2.80 - firetv
     - 192.168.2.81 - printer
@@ -72,6 +74,8 @@ b4:b5:2f:f5:86:7c HP M175nw Laserprinter
 00:17:88:a6:55:32 Philips Hue Gateway (3rd gen)
 
 c8:db:26:07:09:c2 Logitech Harmony
+
+b8:27:eb:a8:d1:01 Phoniebox
 
 54:60:09:fc:0f:68 Chromecast Audio
 54:60:09:d8:e2:1c Chromecast Audio

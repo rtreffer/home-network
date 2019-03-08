@@ -1,1 +1,4 @@
-BASE_PACKAGES=luci-theme-material luci-mod-admin-full luci-ssl luci-app-sqm umdns lldpd tcpdump luasocket bird4 birdc4 -wpad-mini
+BASE_PACKAGES_VERSION=
+BASE_PACKAGES=luci-theme-material luci-mod-admin-full luci-ssl umdns lldpd tcpdump -wpad-mini -wpad-basic
+PACKAGES=
+PACKAGES_VERSION=
