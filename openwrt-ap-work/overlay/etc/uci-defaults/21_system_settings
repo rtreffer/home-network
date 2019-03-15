@@ -15,6 +15,7 @@ EOF
 
 uci -q batch <<-EOF >/dev/null
   set network.lan.ipaddr='192.168.2.6'
+  del network.lan.ip6assign
   commit network
 EOF
 
