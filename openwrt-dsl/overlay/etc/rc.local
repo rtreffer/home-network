@@ -1,0 +1,4 @@
+iptables -t raw -A PREROUTING -i dsl+ -j CT
+iptables -t raw -A PREROUTING -i eth+ -j CT
+
+exit 0
