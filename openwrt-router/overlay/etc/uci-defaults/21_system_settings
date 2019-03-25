@@ -7,6 +7,7 @@ EOF
 
 uci -q batch <<-EOF >/dev/null
   set network.lan.ipaddr='192.168.2.1'
+  set network.lan.macaddr='80:2A:A8:1E:86:A0'
   commit network
 EOF
 

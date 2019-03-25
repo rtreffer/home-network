@@ -7,6 +7,7 @@ uci -q batch <<-EOF >/dev/null
   delete network.@switch_vlan[0]
 
   set network.wan_dev.mtu=1508
+  set network.wan_dev.macaddr='60:E3:27:2F:1E:C6'
 
   set network.switch=switch
   set network.switch.name='switch0'
@@ -34,11 +35,13 @@ uci -q batch <<-EOF >/dev/null
   set network.wan_7.type='bridge'
   set network.wan_7.ifname='eth0.7 dsl0.7'
   set network.wan_7.proto='none'
+  set network.wan_7.macaddr='60:E3:27:2F:1E:C7'
 
   set network.wan_8=interface
   set network.wan_8.type='bridge'
   set network.wan_8.ifname='eth0.8 dsl0.8'
   set network.wan_8.proto='none'
+  set network.wan_8.macaddr='60:E3:27:2F:1E:C8'
 
   set network.dsl.annex=b
   set network.dsl.tone=b
