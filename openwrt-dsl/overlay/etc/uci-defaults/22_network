@@ -17,7 +17,7 @@ uci -q batch <<-EOF >/dev/null
   set network.switch_lan=switch_vlan
   set network.switch_lan.device='switch0'
   set network.switch_lan.vlan='1'
-  set network.switch_lan.ports='0 2 4 6t'
+  set network.switch_lan.ports='0 2 4 5t 6t'
 
   set network.switch_wan_7=switch_vlan
   set network.switch_wan_7.device='switch0'
