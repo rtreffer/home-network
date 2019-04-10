@@ -15,7 +15,6 @@ set wireless.${radio}_${ssid}.mode=ap
 set wireless.${radio}_${ssid}.encryption=psk-mixed
 set wireless.${radio}_${ssid}.ssid=${ssid}
 set wireless.${radio}_${ssid}.key=${pass}
-EOF
 #set wireless.${radio}_${ssid}.doth=1
 set wireless.${radio}_${ssid}.ieee80211w=1
 set wireless.${radio}_${ssid}.ieee80211r=1
