@@ -35,6 +35,7 @@ uci -q batch <<-EOF >/dev/null
   set network.wan.ifname='eth0.7'
   set network.wan.proto='pppoe'
   set network.wan.ipv6='auto'
+  set network.wan.mtu=1492
   set network.wan.username='${telekom_user}'
   set network.wan.password='${telekom_pass}'
   set network.wan.keepalive=10
