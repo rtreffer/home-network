@@ -1,0 +1,1 @@
+PACKAGES_VERSION=-ath10k-firmware-qca988x-ct -firewall -ip6tables -iptables -kmod-ath10k-ct kmod-ath10k ath10k-firmware-qca988x -kmod-ipt-offload -odhcpd-ipv6only -ppp -ppp-mod-pppoe -batctl -batctl-tiny batctl-full

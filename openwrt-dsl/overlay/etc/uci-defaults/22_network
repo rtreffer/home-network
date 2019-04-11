@@ -6,7 +6,6 @@ uci -q batch <<-EOF >/dev/null
   delete network.@switch[0]
   delete network.@switch_vlan[0]
 
-  set network.wan_dev.mtu=1508
   set network.wan_dev.macaddr='60:E3:27:2F:1E:C6'
 
   set network.switch=switch

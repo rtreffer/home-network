@@ -1,2 +1,0 @@
-PACKAGES=-ppp-mod-pppoe -ppp kmod-ppp -ppp-mod-pppoe -kmod-pppox -kmod-pppoe -dnsmasq unbound luci-app-unbound watchcat hostapd-openssl wpa-supplicant-mesh-openssl kmod-batman-adv
-NODE=ap-work

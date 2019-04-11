@@ -1,2 +1,4 @@
 runcmd:
   - [ usermod, --append, --groups, openhab, rtreffer ]
+  - [ usermod, --append, --groups, dialout, openhab ]
+  - [ usermod, --append, --groups, audio, openhab ]

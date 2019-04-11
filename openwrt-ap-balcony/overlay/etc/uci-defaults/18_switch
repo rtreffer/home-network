@@ -1,0 +1,19 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  delete network.@switch_vlan[1]
+  delete network.@switch_vlan[0]
+  delete network.wan
+  delete network.wan6
+
+  set network.vlan1=switch_vlan
+  set network.vlan1.device=switch0
+  set network.vlan1.vlan=1
+  set network.vlan1.ports="0t 1"
+
+  set network.vlan2=switch_vlan
+  set network.vlan2.device=switch0
+  set network.vlan2.vlan=2
+  set network.vlan2.ports="2 3 4 5 6t"
+  commit network
+EOF

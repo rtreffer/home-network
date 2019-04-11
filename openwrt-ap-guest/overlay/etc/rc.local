@@ -5,4 +5,5 @@ ip link set dev wlan0 mtu 2304 || :
 ip link set dev wlan1 mtu 2304 || :
 batctl if add wlan0 || :
 batctl if add wlan1 || :
+batctl gw server || :
 brctl addif br-lan bat0 || :

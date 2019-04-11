@@ -2,30 +2,6 @@
 
 source /etc/secrets/env
 
-add_wireless() {
-  radio=$1
-  ssid=$2
-  pass=$3
-  radioid=$(echo ${radio}|tr -d 'a-z')
-uci -q batch <<-EOF >/dev/null
-set wireless.${radio}_${ssid}=wifi-iface
-set wireless.${radio}_${ssid}.device=${radio}
-set wireless.${radio}_${ssid}.network=lan
-set wireless.${radio}_${ssid}.mode=ap
-set wireless.${radio}_${ssid}.encryption=psk-mixed
-set wireless.${radio}_${ssid}.ssid=${ssid}
-set wireless.${radio}_${ssid}.key=${pass}
-#set wireless.${radio}_${ssid}.doth=1
-set wireless.${radio}_${ssid}.ieee80211w=1
-set wireless.${radio}_${ssid}.ieee80211r=1
-set wireless.${radio}_${ssid}.ft_psk_generate_local=1
-set wireless.${radio}_${ssid}.ft_over_ds=0
-set wireless.${radio}_${ssid}.mobility_domain=${wifi_mobdomain}
-EOF
-
-  uci commit wireless
-}
-
 add_mesh() {
   radio=$1
   ssid=strahlenmesh
@@ -72,12 +48,5 @@ EOF
 
 add_mesh radio0 ${wifi_mesh_key}
 add_mesh radio1 ${wifi_mesh_key}
-
-add_wireless radio0 nina ${wifi_nina_key}
-add_wireless radio1 nina ${wifi_nina_key}
-add_wireless radio0 Strahlenkanone ${wifi_strahlenkanone_key}
-add_wireless radio1 Strahlenkanone ${wifi_strahlenkanone_key}
-add_wireless radio0 echelon ${wifi_echelon_key}
-add_wireless radio1 echelon ${wifi_echelon_key}
 
 exit 0
