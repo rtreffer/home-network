@@ -1,8 +1,6 @@
 # batctl routing_algo BATMAN_V || :
 ip link add name bat0 type batadv || :
 ip link set dev bat0 up || :
-ip link set dev wlan0 mtu 2304 || : 
-ip link set dev wlan1 mtu 2304 || :
 batctl if add wlan0 || :
 batctl if add wlan1 || :
 batctl gw server || :
