@@ -19,15 +19,15 @@ config zone
 config zone
         option name 'ff'
         option input 'DROP'
-        option output 'DROP'
-        option forward 'DROP'
+        option output 'ACCEPT'
+        option forward 'ACCEPT'
         option network 'ff'
 
 config rule
         option enabled '1'
         option target 'ACCEPT'
         option src 'ff'
-        option proto 'tcp udp'
+        option proto 'all'
         option dest_port '67'
         option name 'DHCP'
 
@@ -39,6 +39,21 @@ config rule
         option dest_port '53'
         option name 'DNS'
 
+config rule
+        option enabled '1'
+        option target 'ACCEPT'
+        option src 'ff'
+        option proto 'tcp udp'
+        option dest_port '22'
+        option name 'SSH'
+
+config forwarding
+        option dest 'lan'
+        option src 'ff'
+
+config forwarding
+        option dest 'ff'
+        option src 'lan'
 _FIREWALL_
 
 uci commit firewall

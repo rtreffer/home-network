@@ -1,0 +1,1 @@
+iptables -t nat -A prerouting_ff_rule -m conntrack --ctstate NEW -j MARK --set-mark 1
