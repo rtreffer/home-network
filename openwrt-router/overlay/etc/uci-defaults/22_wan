@@ -39,13 +39,12 @@ uci -q batch <<-EOF >/dev/null
   set network.wan.username='${telekom_user}'
   set network.wan.password='${telekom_pass}'
   set network.wan.keepalive=10
-  set network.wan.mtu=1500
   set network.wan.macaddr='80:2A:A8:1E:86:A7'
 
   set network.wan_iptv=interface
   set network.wan_iptv.ifname='eth0.8'
   set network.wan_iptv.proto='dhcp'
-  set network.wan_iptv.mtu=1500
+  set network.wan_iptv.mtu=1492
   set network.wan_iptv.ipv6='auto'
   set network.wan_iptv.macaddr='80:2A:A8:1E:86:A8'
 
