@@ -3,9 +3,12 @@
 uci -q batch <<-EOF >/dev/null
   set dhcp.@dnsmasq[0].domain=dhcp.ff.home.measite.de
   set dhcp.@dnsmasq[0].local=/dhcp.ff.home.measite.de/
-  set dhcp.lan.start=100
-  set dhcp.lan.limit=254
-  set dhcp.lan.leasetime=24h
-  add_list dhcp.lan.dhcp_option=6,192.168.0.1,8.8.8.8
+  delete dhcp.lan
+  set dhcp.ff=dhcp
+  set dhcp.ff.start=100
+  set dhcp.ff.limit=254
+  set dhcp.ff.leasetime=24h
+  set dhcp.ff.interface=ff
+  add_list dhcp.ff.dhcp_option=6,192.168.0.1,8.8.8.8
   commit dhcp
 EOF

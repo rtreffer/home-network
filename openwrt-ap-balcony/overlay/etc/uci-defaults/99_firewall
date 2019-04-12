@@ -1,0 +1,44 @@
+#!/bin/sh
+cat > /etc/config/firewall << _FIREWALL_
+
+config defaults
+        option input 'DROP'
+        option output 'DROP'
+        option forward 'DROP'
+
+config include
+        option path '/etc/firewall.user'
+
+config zone
+        option input 'ACCEPT'
+        option forward 'ACCEPT'
+        option output 'ACCEPT'
+        option name 'lan'
+        option network 'lan lan6 nwi_mesh0 nwi_mesh1'
+
+config zone
+        option name 'ff'
+        option input 'DROP'
+        option output 'DROP'
+        option forward 'DROP'
+        option network 'ff'
+
+config rule
+        option enabled '1'
+        option target 'ACCEPT'
+        option src 'ff'
+        option proto 'tcp udp'
+        option dest_port '67'
+        option name 'DHCP'
+
+config rule
+        option enabled '1'
+        option target 'ACCEPT'
+        option src 'ff'
+        option proto 'tcp udp'
+        option dest_port '53'
+        option name 'DNS'
+
+_FIREWALL_
+
+uci commit firewall
