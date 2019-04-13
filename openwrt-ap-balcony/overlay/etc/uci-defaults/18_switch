@@ -9,11 +9,23 @@ uci -q batch <<-EOF >/dev/null
   set network.vlan1=switch_vlan
   set network.vlan1.device=switch0
   set network.vlan1.vlan=1
-  set network.vlan1.ports="0t 1"
+  set network.vlan1.ports="0t 1t"
 
   set network.vlan2=switch_vlan
   set network.vlan2.device=switch0
   set network.vlan2.vlan=2
   set network.vlan2.ports="2 3 4 5 6t"
+
+  set network.vlan3=switch_vlan
+  set network.vlan3.device=switch0
+  set network.vlan3.vlan=3
+  set network.vlan3.ports="0t 1"
+
+  set network.wan=interface
+  set network.wan.ifname=eth1.3
+  set network.wan.proto=dhcp
+  set network.wan.ip4table=ff.client
+  set network.wan.macaddr='C4:6E:1F:54:C6:44'
+
   commit network
 EOF

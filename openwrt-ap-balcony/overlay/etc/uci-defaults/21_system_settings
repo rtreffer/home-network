@@ -16,6 +16,7 @@ uci -q batch <<-EOF >/dev/null
   set network.ff.ifname='eth0.2'
   set network.ff.ipaddr='192.168.0.1'
   set network.ff.netmask='255.255.255.0'
+  set network.ff.macaddr='C4:6E:1F:54:C6:43'
   commit network
 EOF
 

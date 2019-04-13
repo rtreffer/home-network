@@ -54,6 +54,18 @@ config forwarding
 config forwarding
         option dest 'ff'
         option src 'lan'
+
+config zone
+        option input 'DROP'
+        option forward 'DROP'
+        option name 'ffclient'
+        option masq '1'
+        option network 'wan'
+        option output 'ACCEPT'
+
+config forwarding
+        option dest 'ffclient'
+        option src 'lan'
 _FIREWALL_
 
 uci commit firewall
