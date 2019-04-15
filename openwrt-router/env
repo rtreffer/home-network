@@ -1,2 +1,2 @@
-PACKAGES=luci-app-upnp luci-app-wireguard luci-app-openvpn luci-proto-wireguard luci-app-ddns ddns-scripts_route53-v1 ca-certificates ca-bundle
+PACKAGES=luci-app-upnp luci-app-wireguard luci-app-openvpn luci-proto-wireguard luci-app-ddns ddns-scripts_route53-v1 ca-certificates ca-bundle prometheus-node-exporter-lua-nat_traffic
 NODE=router

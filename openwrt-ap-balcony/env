@@ -1,2 +1,2 @@
-PACKAGES=dnsmasq -odhcpd unbound luci-app-unbound watchcat hostapd-openssl wpa-supplicant-mesh-openssl kmod-batman-adv batctl ohybridproxy
+PACKAGES=dnsmasq -odhcpd unbound luci-app-unbound watchcat hostapd-openssl wpa-supplicant-mesh-openssl kmod-batman-adv batctl ohybridproxy prometheus-node-exporter-lua-nat_traffic
 NODE=ap-balcony
