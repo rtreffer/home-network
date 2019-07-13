@@ -31,6 +31,8 @@ uci -q batch <<-EOF >/dev/null
   set network.switch_wan_8.vid='8'
   set network.switch_wan_8.ports='4t 6t'
 
+  set network.lan_dev.macaddr='80:2A:A8:1E:86:A6'
+
   set network.wan=interface
   set network.wan.ifname='eth0.7'
   set network.wan.proto='pppoe'
