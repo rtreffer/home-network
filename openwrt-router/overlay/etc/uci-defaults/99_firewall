@@ -16,7 +16,7 @@ config zone 'lan'
         option forward 'ACCEPT'
         option output 'ACCEPT'
         option name 'lan'
-        option network 'lan'
+        option network 'bat0 lan'
 
 config redirect 'redirect'
         option enabled '1'

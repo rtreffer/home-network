@@ -21,8 +21,13 @@ uci -q batch <<-EOF >/dev/null
 EOF
 
 uci -q batch <<-EOF >/dev/null
-  set network.lan.ipaddr='192.168.2.4'
+  set network.lan.ipaddr='192.168.3.4'
   del network.lan.ip6assign
+
+  set network.single=interface
+  set network.single.ifname='br-lan'
+  set network.single.ipaddr='192.168.2.4'
+  set network.single.netmask='255.255.255.255'
   commit network
 EOF
 
