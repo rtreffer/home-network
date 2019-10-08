@@ -1,4 +1,4 @@
 BASE_PACKAGES_VERSION=
-BASE_PACKAGES=luci-theme-material luci-mod-admin-full luci-ssl mdnsd lldpd tcpdump -wpad-mini -wpad-basic luasocket prometheus-node-exporter-lua prometheus-node-exporter-lua-openwrt prometheus-node-exporter-lua-netstat prometheus-node-exporter-lua-textfile prometheus-node-exporter-lua-wifi prometheus-node-exporter-lua-wifi_stations
+BASE_PACKAGES=luci-theme-material luci-mod-admin-full luci-ssl mdnsd lldpd tcpdump -wpad-mini -wpad-basic luasocket prometheus-node-exporter-lua prometheus-node-exporter-lua-openwrt prometheus-node-exporter-lua-netstat prometheus-node-exporter-lua-textfile prometheus-node-exporter-lua-wifi prometheus-node-exporter-lua-wifi_stations avahi-utils
 PACKAGES=
 PACKAGES_VERSION=
