@@ -59,6 +59,7 @@ Not adding a device will later on cause issues.
   - 192.168.3.1 router
   - 192.168.3.4 ap-balcony
   - 192.168.3.5 ap-bedroom
+  - 192.168.3.7 ap-living
   - 192.168.3.8 ap-guest
 
 # Freifunk
