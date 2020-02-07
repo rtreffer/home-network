@@ -16,10 +16,10 @@ $(eval $(call openwrt-build-container,19.07.1,ath79,generic))
 
 # openwrt nodes
 $(eval $(call build-node,ap-work,19.07.1,ar71xx,generic,archer-c7-v2))
-$(eval $(call build-node,ap-living,19.07.1,ar71xx,generic,archer-c5-v1))
+$(eval $(call build-node,ap-living,19.07.1,ath79,generic,tplink_archer-c5-v1))
 $(eval $(call build-node,ap-bedroom,19.07.1,ath79,generic,tplink_archer-c5-v1))
-$(eval $(call build-node,ap-guest,19.07.1,ar71xx,generic,archer-c7-v5))
-$(eval $(call build-node,ap-balcony,19.07.1,ar71xx,generic,archer-c7-v2))
+$(eval $(call build-node,ap-guest,19.07.1,ath79,generic,tplink_archer-c7-v5))
+$(eval $(call build-node,ap-balcony,19.07.1,ath79,generic,tplink_archer-c7-v2))
 $(eval $(call build-node,dsl,19.07.1,lantiq,xrx200,tplink_vr200v))
 $(eval $(call build-node,ffgateway,18.06.2,ramips,mt7620,wrtnode))
 $(eval $(call build-node,router,19.07.1,ramips,mt7621,ubnt-erx))
