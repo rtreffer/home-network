@@ -16,7 +16,9 @@ Not adding a device will later on cause issues.
     - 192.168.2.8 - ap-guest
     - 192.168.2.9 - ffgateway
   - 192.168.2.[12][0-9]: static machine ips (assigned)
+    - 192.168.2.10 - pihole1.local
     - 192.168.2.11 - pvr.local
+    - 192.168.2.10 - pihole2.local
     - 192.168.2.15 - vmhost.local
     - 192.168.2.26 - mqtt.local
     - 192.168.2.27 - RaspberryMatic
@@ -53,6 +55,12 @@ Not adding a device will later on cause issues.
 
 - 192.168.1.0/24 - freifunk uplink network
 
+- 192.168.3.0/24 - mesh network (ethernet vlan 103)
+  - 192.168.3.1 router
+  - 192.168.3.4 ap-balcony
+  - 192.168.3.5 ap-bedroom
+  - 192.168.3.8 ap-guest
+
 # Freifunk
 
 - rt-tunnel (offloader)
@@ -66,6 +74,15 @@ Not adding a device will later on cause issues.
   - DHCP: 10.36.218.160/28
 
 # MAC registry
+
+## Network devices
+
+ap-guest
+- 0C:80:63:F7:1A:77 5GHz
+- 0C:80:63:F7:1A:78 2.4GHz
+- 0C:80:63:F7:1A:76 ethernet
+
+## Misc devices
 
 b4:b5:2f:f5:86:7c HP M175nw Laserprinter
 

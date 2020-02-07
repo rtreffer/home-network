@@ -25,6 +25,7 @@ uci -q batch <<-EOF >/dev/null
   del network.lan.ip6assign
 
   set network.single=interface
+  set network.single.proto='static'
   set network.single.ifname='br-lan'
   set network.single.ipaddr='192.168.2.4'
   set network.single.netmask='255.255.255.255'
