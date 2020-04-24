@@ -8,7 +8,6 @@ $(eval $(call build-sbc-node,prometheus,rpi3,ubuntu-bionic-arm64))
 $(eval $(call build-sbc-node,mqtt,rpi3,ubuntu-cosmic-arm64))
 
 # openwrt build container
-$(eval $(call openwrt-build-container,19.07.2,ar71xx,generic))
 $(eval $(call openwrt-build-container,19.07.2,ramips,mt7621))
 $(eval $(call openwrt-build-container,19.07.2,ramips,mt7620))
 $(eval $(call openwrt-build-container,19.07.2,lantiq,xrx200))
