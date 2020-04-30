@@ -1,0 +1,2 @@
+PACKAGES=-hostapd -hostapd-common kmod-ipt-raw luci-app-upnp luci-app-wireguard luci-app-openvpn luci-proto-wireguard luci-app-ddns ddns-scripts_route53-v1 ca-certificates ca-bundle prometheus-node-exporter-lua-nat_traffic hostapd-openssl wpa-supplicant-mesh-openssl kmod-batman-adv batctl ohybridproxy prometheus-node-exporter-lua-wifi_stations
+NODE=dsl-router

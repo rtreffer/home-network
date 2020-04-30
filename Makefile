@@ -9,19 +9,23 @@ $(eval $(call build-sbc-node,mqtt,rpi3,ubuntu-cosmic-arm64))
 
 # openwrt build container
 $(eval $(call openwrt-build-container,19.07.2,ramips,mt7621))
+$(eval $(call openwrt-build-container,snapshot,ramips,mt7621))
 $(eval $(call openwrt-build-container,19.07.2,ramips,mt7620))
 $(eval $(call openwrt-build-container,19.07.2,lantiq,xrx200))
+$(eval $(call openwrt-build-container,snapshot,lantiq,xrx200))
 $(eval $(call openwrt-build-container,19.07.2,ath79,generic))
+$(eval $(call openwrt-build-container,snapshot,ath79,generic))
 
 # openwrt nodes
-$(eval $(call build-node,ap-work,19.07.2,ath79,generic,archer-c7-v2))
-$(eval $(call build-node,ap-living,19.07.2,ath79,generic,tplink_archer-c5-v1))
-$(eval $(call build-node,ap-bedroom,19.07.2,ath79,generic,tplink_archer-c5-v1))
-$(eval $(call build-node,ap-guest,19.07.2,ath79,generic,tplink_archer-c7-v5))
-$(eval $(call build-node,ap-balcony,19.07.2,ath79,generic,tplink_archer-c7-v2))
+$(eval $(call build-node,ap-living,snapshot,ath79,generic,tplink_archer-c5-v1))
+$(eval $(call build-node,ap-bedroom,snapshot,ath79,generic,tplink_archer-c5-v1))
+$(eval $(call build-node,ap-guest,snapshot,ath79,generic,tplink_archer-c7-v5))
+$(eval $(call build-node,ap-balcony,snapshot,ath79,generic,tplink_archer-c7-v2))
 $(eval $(call build-node,dsl,19.07.2,lantiq,xrx200,tplink_vr200v))
-$(eval $(call build-node,ffgateway,18.06.2,ramips,mt7620,wrtnode))
 $(eval $(call build-node,router,19.07.2,ramips,mt7621,ubnt-erx))
+$(eval $(call build-node,dsl-router,snapshot,lantiq,xrx200,avm_fritz7362sl))
+# TODO: snapshot switched from swconfig to linux DSA
+# $(eval $(call build-node,router,snapshot,ramips,mt7621,ubnt_edgerouter-x))
 
 clean:
 	@rm -rf ./target/*

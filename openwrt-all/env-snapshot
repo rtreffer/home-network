@@ -1,1 +1,1 @@
-BASE_PACKAGES_VERSION=-bird4 bird1-ipv4 bird1-ipv4-uci bird1c-ipv4 -batctl batctl-tiny unbound-daemon-heavy -unbound
+BASE_PACKAGES_VERSION=
