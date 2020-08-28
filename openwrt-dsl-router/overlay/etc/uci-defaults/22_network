@@ -5,7 +5,24 @@ source /etc/secrets/env
 uci -q batch <<-EOF >/dev/null
   delete network.wan
   delete network.wan6
-  
+  delete network.@switch[0]
+  delete network.@switch_vlan[1]
+  delete network.@switch_vlan[0]
+ 
+  set network.switch=switch
+  set network.switch.name='switch0'
+  set network.switch.reset='1'
+  set network.switch.enable_vlan='0'
+
+  set network.switch_lan=switch_vlan
+  set network.switch_lan.device='switch0'
+  set network.switch_lan.vlan='1'
+  set network.switch_lan.ports='0 1 2 4 6'
+  set network.switch_lan.vid='1'
+
+  set network.lan_eth0_1_dev.name='eth0'
+  set network.lan.ifname='eth0'
+
   set network.dsl.annex=b
   set network.dsl.tone=b
   set network.dsl.xfer_mode=ptm
