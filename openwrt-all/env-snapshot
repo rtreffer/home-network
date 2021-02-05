@@ -1,1 +1,1 @@
-BASE_PACKAGES_VERSION=
+BASE_PACKAGES_VERSION=-unbound-daemon-heavy unbound-daemon

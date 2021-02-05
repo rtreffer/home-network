@@ -1,0 +1,14 @@
+batctl routing_algo BATMAN_V || :
+ip link add name bat0 type batadv || :
+ip link set dev bat0 up || :
+batctl if add wlan0 || :
+batctl if add wlan1 || :
+batctl gw server || :
+# brctl addif br-lan bat0 || :
+
+ip link add link br-lan name br-lan.103 type vlan proto 802.1ad id 103
+ip link set dev br-lan.103 up
+batctl if add br-lan.103
+ifconfig bat0 192.168.3.3 netmask 255.255.255.0 up
+
+batctl hardif br-lan.103 throughput_override 1000000

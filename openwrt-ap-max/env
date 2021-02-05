@@ -1,0 +1,2 @@
+PACKAGES=-dnsmasq -odhcpd hostapd-openssl watchcat wpa-supplicant-mesh-openssl kmod-batman-adv batctl ohybridproxy prometheus-node-exporter-lua-hostapd_stations
+NODE=ap-max

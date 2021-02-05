@@ -9,6 +9,7 @@ Not adding a device will later on cause issues.
   - 192.168.2.[0-9] - network devices (assigned)
     - 192.168.2.1 - router (dhcp, vpn, ...)
     - 192.168.2.2 - dsl modem
+    - 192.168.2.3 - ap-max
     - 192.168.2.4 - ap-balcony
     - 192.168.2.5 - ap-bedroom, dns3
     - 192.168.2.6 - ap-work, dns2
@@ -58,6 +59,7 @@ Not adding a device will later on cause issues.
 
 - 192.168.3.0/24 - mesh network (ethernet vlan 103)
   - 192.168.3.1 router
+  - 192.168.3.3 ap-max
   - 192.168.3.4 ap-balcony
   - 192.168.3.5 ap-bedroom
   - 192.168.3.7 ap-living
