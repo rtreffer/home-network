@@ -7,7 +7,7 @@ uci -q batch <<-EOF >/dev/null
   set wireless.radio0.disabled=0
   set wireless.radio0.beacon_int=50
   set wireless.radio1.country=DE
-  set wireless.radio1.channel=11
+  set wireless.radio1.channel=8
   set wireless.radio1.disabled=0
   set wireless.radio1.htmode='HT20'
   set wireless.radio1.beacon_int=500
