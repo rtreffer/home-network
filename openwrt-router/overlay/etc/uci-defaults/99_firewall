@@ -1,0 +1,93 @@
+#!/bin/sh
+
+cat <<-EOF >/etc/config/firewall
+config defaults 'defaults'
+        option input 'ACCEPT'
+        option output 'ACCEPT'
+        option forward 'DROP'
+        option flow_offloading '1'
+        option flow_offloading_hw '1'
+
+config include 'user'
+        option path '/etc/firewall.user'
+
+config include 'miniupnpd'
+        option type 'script'
+        option path '/usr/share/miniupnpd/firewall.include'
+        option family 'any'
+        option reload '1'
+
+config zone
+        option name 'lan'
+        option input 'ACCEPT'
+        option output 'ACCEPT'
+        option forward 'ACCEPT'
+        option masq_allow_invalid '1'
+        option auto_helper '0'
+        list network 'lan'
+        list device 'bat0'
+        list device 'br-lan'
+
+config zone
+        option name 'wan'
+        option input 'DROP'
+        option output 'ACCEPT'
+        option forward 'DROP'
+        option masq '1'
+        option mtu_fix '1'
+        option masq_allow_invalid '1'
+        option auto_helper '0'
+        list network 'wan'
+        list network 'wan6'
+        list device 'wan'
+
+config forwarding
+        option src 'lan'
+        option dest 'wan'
+
+config zone
+        option name 'fritz'
+        option input 'ACCEPT'
+        option output 'ACCEPT'
+        option forward 'ACCEPT'
+        option masq '1'
+        list device 'eth3'
+        option masq_allow_invalid '1'
+        option auto_helper '0'
+        list network 'fritz'
+
+config forwarding
+        option src 'fritz'
+        option dest 'lan'
+
+config forwarding
+        option src 'fritz'
+        option dest 'wan'
+
+config forwarding
+        option src 'lan'
+        option dest 'fritz'
+
+# see https://openwrt.org/docs/guide-user/network/ipv6/start
+config rule
+	option target 'ACCEPT'
+	option src 'wan'
+	option proto 'udp'
+	option dest_port '547'
+	option name 'Allow DHCPv6 (546-to-547)'
+	option family 'ipv6'
+	option src_port '546'
+
+config rule
+        option target 'ACCEPT'
+        option src 'wan'
+        option proto 'udp'
+        option dest_port '546'
+        option name 'Allow DHCPv6 (547-to-546)'
+        option family 'ipv6'
+        option src_port '547'
+EOF
+
+uci commit firewall
+
+exit 0

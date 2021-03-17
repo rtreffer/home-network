@@ -1,0 +1,74 @@
+#!/bin/sh
+
+source /etc/secrets/env
+
+uci -q batch <<-EOF >/dev/null
+  delete network.wan
+  delete network.wan6
+
+  # radvd / ipv6
+
+  set network.lan.ip6assign=56
+
+  # switch ports / brdige
+
+  set network.lan.ifname='eth0 eth1 eth2' 
+
+  # fritz management port
+
+  set network.fritz=interface
+  set network.fritz.proto=static
+  set network.fritz.ipaddr=192.168.1.2
+  set network.fritz.netmask=255.255.255.0
+  set network.fritz.ifname=eth3
+
+  # PPPoE (eth4)
+
+  # set network.ifwan=device
+  # set network.ifwan.type=8021q
+  # set network.ifwan.ifname=eth4
+  # set network.ifwan.name=ifwan
+  # set network.ifwan.vid=7
+
+  # set network.ifwan_iptv=device
+  # set network.ifwan_iptv.type=8021q
+  # set network.ifwan_iptv.ifname=eth4
+  # set network.ifwan_iptv.name=eth4.8
+  # set network.ifwan_iptv.vid=8
+
+  set network.wan=interface
+  set network.wan.proto='pppoe'
+  set network.wan.ifname='eth4'
+  set network.wan.ipv6='auto'
+  set network.wan.username='${telekom_user}'
+  set network.wan.password='${telekom_pass}'
+  set network.wan.keepalive=10
+  set network.wan.macaddr='80:2A:A8:1E:86:B0'
+
+  # set network.wan_iptv=interface
+  # set network.wan_iptv.proto='dhcp'
+  # set network.wan_iptv.ifname='ifwan_iptv'
+  # set network.wan_iptv.ipv6='auto'
+  # set network.wan_iptv.macaddr='80:2A:A8:1E:86:B1'
+
+  set network.wan6=interface
+  set network.wan6.ifname='@wan'
+  set network.wan6.proto='dhcpv6'
+  set network.wan6.reqprefix='56'
+
+  set network.lan.ip6assign=56
+
+  commit network
+EOF
+
+uci -q batch <<-EOF >/dev/null
+  set dhcp.@dnsmasq[0].domain=dhcp.home.measite.de
+  set dhcp.@dnsmasq[0].local=/dhcp.home.measite.de/
+  set dhcp.lan.start=100
+  set dhcp.lan.limit=254
+  set dhcp.lan.leasetime=24h
+  add_list dhcp.lan.dhcp_option=6,192.168.2.7,192.168.2.8,192.168.2.5
+  commit dhcp
+EOF
+
+exit 0

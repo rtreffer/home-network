@@ -14,7 +14,10 @@ protocol device {
 
 protocol kernel {
         learn;
-        export all;
+        export filter {
+          if 0.0.0.0 ~ net then reject;
+          accept;
+        };
         import all;
         debug all;
         scan time 10;
@@ -29,6 +32,10 @@ protocol direct {
 }
 
 protocol ospf {
+        import filter {
+          if (source = RTS_OSPF_EXT2 && net = 0.0.0.0/0) then reject;
+          accept;
+        };
         import all;
         export all;
         debug all;
@@ -69,7 +76,7 @@ protocol ospf {
                         authentication cryptographic; password "${ospf_pass}";
                 };
 
-                interface -"wan*",-"ifwan*","*" {
+                interface "*" {
                         cost 100;
                         stub;
                 };
