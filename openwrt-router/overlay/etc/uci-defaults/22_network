@@ -14,13 +14,13 @@ uci -q batch <<-EOF >/dev/null
 
   set network.lan.ifname='eth0 eth1 eth2' 
 
-  # fritz management port
+  # modem management port
 
-  set network.fritz=interface
-  set network.fritz.proto=static
-  set network.fritz.ipaddr=192.168.1.2
-  set network.fritz.netmask=255.255.255.0
-  set network.fritz.ifname=eth3
+  set network.modem=interface
+  set network.modem.proto=static
+  set network.modem.ipaddr=192.168.1.2
+  set network.modem.netmask=255.255.255.252
+  set network.modem.ifname=eth4
 
   # PPPoE (eth4)
 
