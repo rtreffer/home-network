@@ -12,3 +12,7 @@ batctl if add br-lan.103
 ifconfig bat0 192.168.3.3 netmask 255.255.255.0 up
 
 batctl hardif br-lan.103 throughput_override 1000000
+
+if rm /etc/seccomp/umdns.json; then
+  /etc/init.d/umdns restart || true
+fi

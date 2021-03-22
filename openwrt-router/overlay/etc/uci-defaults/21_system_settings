@@ -10,17 +10,4 @@ uci -q batch <<-EOF >/dev/null
   commit network
 EOF
 
-uci -q batch <<-EOF >/dev/null
-  set network.bat0=interface
-  set network.bat0.proto='batadv'
-  set network.bat0.ipaddr='192.168.3.1'
-  set network.bat0.netmask='255.255.255.0'
-  set network.bat0.routing_algo='BATMAN_V'
-  set network.bat0.ap_isolation=0
-  set network.bat0.fragmentation=1
-  set network.bat0.distributed_arp_table=1
-  set network.bat0.gw_mode='server'
-  commit network
-EOF
-
 exit 0

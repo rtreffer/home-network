@@ -17,11 +17,15 @@ set wireless.${radio}_${ssid}.ssid=${ssid}
 set wireless.${radio}_${ssid}.key=${pass}
 set wireless.${radio}_${ssid}.doth=1
 # set wireless.${radio}_${ssid}.ieee80211w=1
-# set wireless.${radio}_${ssid}.ieee80211r=1
-set wireless.${radio}_${ssid}.ieee80211k=1
+set wireless.${radio}_${ssid}.ieee80211r=1
+# set wireless.${radio}_${ssid}.ieee80211k=1
+set wireless.${radio}_${ssid}.ieee80211v='1'
 set wireless.${radio}_${ssid}.ft_psk_generate_local=1
 set wireless.${radio}_${ssid}.ft_over_ds=0
 set wireless.${radio}_${ssid}.mobility_domain=${wifi_mobdomain}
+set wireless.${radio}_${ssid}.wnm_sleep_mode='1'
+set wireless.${radio}_${ssid}.bss_transition='1'
+set wireless.${radio}_${ssid}.logger_syslog_level='1'
 EOF
 
   uci commit wireless
@@ -43,6 +47,7 @@ set wireless.${radio}_${ssid}.encryption=psk2+ccmp
 set wireless.${radio}_${ssid}.mesh_id=${ssid}
 set wireless.${radio}_${ssid}.key=${pass}
 set wireless.${radio}_${ssid}.sae_password=${pass}
+set wireless.${radio}_${ssid}.logger_syslog_level=1
 
 set network.nwi_${interface}=interface
 set network.nwi_${interface}.ifname=${interface}

@@ -4,7 +4,8 @@ addr=$(uci get network.lan.ipaddr)
 source /etc/secrets/env
 
 cat > /etc/bird.conf <<-EOF
-log syslog all;
+# log syslog all;
+log syslog { info, warning, error, fatal };
 
 router id ${addr};
 
