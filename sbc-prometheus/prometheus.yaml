@@ -34,41 +34,12 @@ write_files:
         - targets:
           - '192.168.2.1:9100'
           - '192.168.2.5:9100'
-          - '192.168.2.6:9100'
-          - '192.168.2.7:9100'
+          - '192.168.2.5:9100'
+          - '192.168.2.8:9100'
+          - '192.168.3.4:9100'
       - job_name: 'node'
         static_configs:
         - targets:
           - '192.168.2.15:9100'
           - '192.168.2.28:9100'
           - '192.168.2.29:9100'
-      - job_name: 'hs110'
-        metrics_path: '/hs110'
-        static_configs:
-        - targets:
-          - '192.168.2.31'
-          - '192.168.2.32'
-          - '192.168.2.33'
-          - '192.168.2.34'
-          - '192.168.2.35'
-          - '192.168.2.36'
-          - '192.168.2.37'
-          - '192.168.2.38'
-        relabel_configs:
-        - source_labels: [__address__]
-          separator: ;
-          regex: (.*)
-          target_label: __param_target
-          replacement: ${1}
-          action: replace
-        - source_labels: [__param_target]
-          separator: ;
-          regex: (.*)
-          target_label: instance
-          replacement: ${1}
-          action: replace
-        - separator: ;
-          regex: .*
-          target_label: __address__
-          replacement: localhost:12040
-          action: replace

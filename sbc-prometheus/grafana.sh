@@ -3,7 +3,7 @@
 set -euo pipefail
 
 apt-get install -y fontconfig-config fonts-dejavu-core libfontconfig1 libfreetype6 libpng16-16
-wget -O /tmp/grafana.deb https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.2.1_arm64.deb
+iwget -O /tmp/grafana.deb  https://dl.grafana.com/oss/release/grafana_6.7.3_arm64.deb
 dpkg -i /tmp/grafana.deb
 rm /tmp/grafana.deb
 

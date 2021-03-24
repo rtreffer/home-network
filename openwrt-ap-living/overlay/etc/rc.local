@@ -6,9 +6,14 @@ batctl if add wlan1 || :
 batctl gw server || :
 # brctl addif br-lan bat0 || :
 
-ip link add link br-lan name br-lan.103 type vlan proto 802.1ad id 103
-ip link set dev br-lan.103 up
-batctl if add br-lan.103
+# BATMAN V on ethernet
+#ip link add link br-lan name br-lan.103 type vlan proto 802.1ad id 103
+#ip link set dev br-lan.103 up
+#batctl if add br-lan.103
+#batctl hardif br-lan.103 throughput_override 1000000
+
 ifconfig bat0 192.168.3.7 netmask 255.255.255.0 up
 
-batctl hardif br-lan.103 throughput_override 1000000
+if rm /etc/seccomp/umdns.json; then
+  /etc/init.d/umdns restart || true
+fi
