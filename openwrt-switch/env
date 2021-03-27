@@ -1,0 +1,2 @@
+PACKAGES=-dnsmasq -odhcpd watchcat
+NODE=switch

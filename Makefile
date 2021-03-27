@@ -26,6 +26,7 @@ $(eval $(call build-node,ap-max,21.02-SNAPSHOT,ath79,generic,tplink_archer-c7-v2
 $(eval $(call build-node,ap-balcony,21.02-SNAPSHOT,ath79,generic,tplink_archer-c7-v2))
 
 $(eval $(call build-node,router,21.02-SNAPSHOT,ramips,mt7621,ubnt_edgerouter-x))
+$(eval $(call build-node,switch,21.02-SNAPSHOT,ramips,mt7621,ubnt_edgerouter-x))
 
 $(eval $(call build-node,dsl-router,snapshot,lantiq,xrx200,avm_fritz7362sl))
 $(eval $(call build-node,lte,snapshot,ramips,mt7620,wrtnode_wrtnode))

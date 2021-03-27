@@ -1,3 +1,4 @@
 config prometheus-node-exporter-lua 'main'
         option listen_address '192.168.2.1'
+	option listen_interface 'lan'
         option listen_port '9100'
