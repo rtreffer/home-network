@@ -5,8 +5,6 @@ config defaults 'defaults'
         option input 'ACCEPT'
         option output 'ACCEPT'
         option forward 'DROP'
-        option flow_offloading '1'
-        option flow_offloading_hw '1'
 
 config include 'user'
         option path '/etc/firewall.user'
@@ -46,23 +44,22 @@ config forwarding
         option dest 'wan'
 
 config zone
-        option name 'fritz'
         option input 'ACCEPT'
         option output 'ACCEPT'
         option forward 'ACCEPT'
         option masq_allow_invalid '1'
         option auto_helper '0'
-        list masq_src '192.168.2.0/24'
-        list masq_dest '192.168.1.1/32'
         list network 'modem'
+        option name 'modem'
+        option masq '1'
 
 config forwarding
-        option src 'fritz'
         option dest 'lan'
+        option src 'modem'
 
 config forwarding
         option src 'lan'
-        option dest 'fritz'
+        option dest 'modem'
 
 config rule
         option target 'ACCEPT'
@@ -81,6 +78,7 @@ config rule
         option name 'Allow DHCPv6 (547-to-546)'
         option family 'ipv6'
         option src_port '547'
+
 EOF
 
 uci commit firewall
