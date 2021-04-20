@@ -21,8 +21,9 @@ EOF
 #  /etc/init.d/umdns restart || true
 #fi
 
-# /etc/init.d/dawn disable || true
-# /etc/init.d/dawn stop || true
+# disable dawn for now
+/etc/init.d/dawn disable || true
+/etc/init.d/dawn stop || true
 
 uci commit dawn
 
