@@ -22,8 +22,8 @@ EOF
 #fi
 
 # disable dawn for now
-/etc/init.d/dawn disable || true
-/etc/init.d/dawn stop || true
+#/etc/init.d/dawn disable || true
+#/etc/init.d/dawn stop || true
 
 uci commit dawn
 
