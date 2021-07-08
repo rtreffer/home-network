@@ -5,6 +5,12 @@ source /etc/secrets/env
 uci -q batch <<-EOF >/dev/null
   delete network.wan
   delete network.wan6
+  delete network.@device[0]
+
+  set network.br_lan=device
+  set network.br_lan.name='br-lan'
+  set network.br_lan.type='bridge'
+  set network.br_lan.ports='eth0 eth1 eth2 eth3'
 
   # radvd / ipv6
 
@@ -12,7 +18,7 @@ uci -q batch <<-EOF >/dev/null
 
   # switch ports / brdige
 
-  set network.lan.ifname='eth0 eth1 eth2' 
+  set network.lan.ifname='eth0 eth1 eth2 eth3'
 
   # modem management port
 
