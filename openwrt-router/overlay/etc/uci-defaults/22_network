@@ -26,7 +26,7 @@ uci -q batch <<-EOF >/dev/null
   set network.modem.proto=static
   set network.modem.ipaddr=192.168.1.2
   set network.modem.netmask=255.255.255.252
-  set network.modem.ifname=eth4
+  set network.modem.device=eth4
   set network.modem.ipv6=off
 
   # PPPoE (eth4)
@@ -45,7 +45,7 @@ uci -q batch <<-EOF >/dev/null
 
   set network.wan=interface
   set network.wan.proto='pppoe'
-  set network.wan.ifname='eth4'
+  set network.wan.device='eth4'
   set network.wan.ipv6='auto'
   set network.wan.username='${telekom_user}'
   set network.wan.password='${telekom_pass}'
@@ -58,7 +58,7 @@ uci -q batch <<-EOF >/dev/null
   # set network.wan_iptv.macaddr='80:2A:A8:1E:86:B1'
 
   set network.wan6=interface
-  set network.wan6.ifname='@wan'
+  set network.wan6.device='@wan'
   set network.wan6.proto='dhcpv6'
   set network.wan6.reqprefix='56'
 
