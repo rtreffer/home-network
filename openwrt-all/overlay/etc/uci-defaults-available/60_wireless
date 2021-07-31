@@ -12,12 +12,13 @@ set wireless.${radio}_${ssid}=wifi-iface
 set wireless.${radio}_${ssid}.device=${radio}
 set wireless.${radio}_${ssid}.network=lan
 set wireless.${radio}_${ssid}.mode=ap
-set wireless.${radio}_${ssid}.encryption=sae-mixed
+set wireless.${radio}_${ssid}.encryption=psk2
+set wireless.${radio}_${ssid}.auth_cache='1'
 set wireless.${radio}_${ssid}.disassoc_low_ack='0'
 set wireless.${radio}_${ssid}.ssid=${ssid}
 set wireless.${radio}_${ssid}.key=${pass}
 set wireless.${radio}_${ssid}.doth=1
-# set wireless.${radio}_${ssid}.ieee80211w=1
+set wireless.${radio}_${ssid}.ieee80211w=1
 set wireless.${radio}_${ssid}.ieee80211r=1
 set wireless.${radio}_${ssid}.ieee80211k=1
 set wireless.${radio}_${ssid}.ieee80211v='1'
@@ -31,6 +32,15 @@ set wireless.${radio}_${ssid}.time_advertisement='2'
 set wireless.${radio}_${ssid}.time_zone='CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00'
 EOF
 
+  uci commit wireless
+}
+
+wpa3() {
+  radio=$1
+  ssid=$2
+uci -q batch <<-EOF >/dev/null
+set wireless.${radio}_${ssid}.encryption=sae-mixed
+EOF
   uci commit wireless
 }
 
@@ -88,5 +98,8 @@ add_wireless radio0 Strahlenkanone ${wifi_strahlenkanone_key}
 add_wireless radio1 Strahlenkanone ${wifi_strahlenkanone_key}
 add_wireless radio0 echelon ${wifi_echelon_key}
 add_wireless radio1 echelon ${wifi_echelon_key}
+
+wpa3 radio0 Strahlenkanone
+wpa3 radio1 Strahlenkanone
 
 exit 0
