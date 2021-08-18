@@ -2,7 +2,7 @@
 
 source /etc/secrets/env
 
-cat > /etc/config/ddns.new << _DDNS_
+cat > /etc/config/ddns << _DDNS_
 config ddns 'global'
         option ddns_dateformat '%F %R'
         option ddns_loglines '250'
@@ -23,7 +23,7 @@ config service 'route53'
         option retry_count '2'
 _DDNS_
 
-# uci commit
+uci commit ddns
 
 # /etc/init.d/ddns reload
 
