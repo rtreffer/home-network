@@ -19,11 +19,11 @@ $(eval $(call openwrt-build-container,21.02.0,ath79,generic))
 
 
 # openwrt nodes
-$(eval $(call build-node,ap-living,21.02-SNAPSHOT,ath79,generic,tplink_archer-c5-v1))
-$(eval $(call build-node,ap-bedroom,21.02-SNAPSHOT,ath79,generic,tplink_archer-c5-v1))
-$(eval $(call build-node,ap-guest,21.02-SNAPSHOT,ath79,generic,tplink_archer-c7-v5))
-$(eval $(call build-node,ap-max,21.02-SNAPSHOT,ath79,generic,tplink_archer-c7-v2))
-$(eval $(call build-node,ap-balcony,21.02-SNAPSHOT,ath79,generic,tplink_archer-c7-v2))
+$(eval $(call build-node,ap-living,21.02.0,ath79,generic,tplink_archer-c5-v1))
+$(eval $(call build-node,ap-bedroom,21.02.0,ath79,generic,tplink_archer-c5-v1))
+$(eval $(call build-node,ap-guest,21.02.0,ath79,generic,tplink_archer-c7-v5))
+$(eval $(call build-node,ap-max,21.02.0,ath79,generic,tplink_archer-c7-v2))
+$(eval $(call build-node,ap-balcony,21.02.0,ath79,generic,tplink_archer-c7-v2))
 
 $(eval $(call build-node,router,21.02.0,ramips,mt7621,ubnt_edgerouter-x))
 $(eval $(call build-node,switch,21.02.0,ramips,mt7621,ubnt_edgerouter-x))
