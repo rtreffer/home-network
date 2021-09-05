@@ -1,0 +1,17 @@
+#!/bin/sh
+
+source /etc/secrets/env
+
+uci -q batch <<-EOF >/dev/null
+  upnpd.config.enabled='1'
+  upnpd.config.download='1024'
+  upnpd.config.upload='512'
+  upnpd.config.internal_iface='lan'
+  upnpd.config.port='5351'
+  commit upnpd
+EOF
+
+/etc/init.d/miniupnpd enable
+/etc/init.d/miniupnpd start
+
+exit 0

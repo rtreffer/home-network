@@ -12,10 +12,10 @@ $(eval $(call openwrt-build-container,snapshot,ramips,mt7621))
 $(eval $(call openwrt-build-container,snapshot,ramips,mt7620))
 $(eval $(call openwrt-build-container,snapshot,lantiq,xrx200))
 $(eval $(call openwrt-build-container,snapshot,ath79,generic))
-$(eval $(call openwrt-build-container,21.02-SNAPSHOT,ramips,mt7621))
-$(eval $(call openwrt-build-container,21.02-SNAPSHOT,ramips,mt7620))
-$(eval $(call openwrt-build-container,21.02-SNAPSHOT,lantiq,xrx200))
-$(eval $(call openwrt-build-container,21.02-SNAPSHOT,ath79,generic))
+$(eval $(call openwrt-build-container,21.02.0,ramips,mt7621))
+$(eval $(call openwrt-build-container,21.02.0,ramips,mt7620))
+$(eval $(call openwrt-build-container,21.02.0,lantiq,xrx200))
+$(eval $(call openwrt-build-container,21.02.0,ath79,generic))
 
 
 # openwrt nodes
@@ -25,8 +25,8 @@ $(eval $(call build-node,ap-guest,21.02-SNAPSHOT,ath79,generic,tplink_archer-c7-
 $(eval $(call build-node,ap-max,21.02-SNAPSHOT,ath79,generic,tplink_archer-c7-v2))
 $(eval $(call build-node,ap-balcony,21.02-SNAPSHOT,ath79,generic,tplink_archer-c7-v2))
 
-$(eval $(call build-node,router,21.02-SNAPSHOT,ramips,mt7621,ubnt_edgerouter-x))
-$(eval $(call build-node,switch,21.02-SNAPSHOT,ramips,mt7621,ubnt_edgerouter-x))
+$(eval $(call build-node,router,21.02.0,ramips,mt7621,ubnt_edgerouter-x))
+$(eval $(call build-node,switch,21.02.0,ramips,mt7621,ubnt_edgerouter-x))
 
 $(eval $(call build-node,dsl-router,snapshot,lantiq,xrx200,avm_fritz7362sl))
 $(eval $(call build-node,lte,snapshot,ramips,mt7620,wrtnode_wrtnode))
