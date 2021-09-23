@@ -22,9 +22,10 @@ config zone
         option forward 'ACCEPT'
         option masq_allow_invalid '1'
         option auto_helper '0'
-        list network 'lan'
         list device 'bat0'
         list device 'br-lan'
+        list network 'lan'
+        list network 'wg'
 
 config zone
         option name 'wan'
@@ -88,6 +89,29 @@ config redirect
         option dest 'lan'
         option dest_ip '192.168.2.20'
         option dest_port '9735'
+
+config rule
+        option name 'wireguard'
+        option dest_port '51820'
+        option target 'ACCEPT'
+        list proto 'udp'
+        option src '*'
+
+config zone
+        option name 'lan_loop'
+        option input 'ACCEPT'
+        option output 'ACCEPT'
+        option forward 'ACCEPT'
+        option auto_helper '0'
+        list network 'lan'
+
+config forwarding
+        option src 'lan_loop'
+        option dest 'lan'
+
+config forwarding
+        option src 'lan'
+        option dest 'lan_loop'
 EOF
 
 uci commit firewall

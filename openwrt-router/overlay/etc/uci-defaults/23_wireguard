@@ -9,9 +9,29 @@ uci -q batch <<-EOF >/dev/null
   set network.wg.proto='wireguard'
   set network.wg.private_key='${WG_KEY}'
   set network.wg.listen_port=51820
-  add_list network.addr=192.168.9.1
+  set network.wg.force_link='1'
+  add_list network.wg.addresses='192.168.9.1/24'
 
   commit network
 EOF
+
+add_client() {
+  ip=$1
+  name=$2
+  key=$3
+uci -q batch <<-EOF > /dev/null
+  delete network.wg_${name}
+  set network.wg_${name}=wireguard_wg
+  set network.wg_${name}.description='${name}'
+  set network.wg_${name}.public_key='${key}'
+  add_list network.wg_${name}.allowed_ips='${ip}/32'
+  set network.wg_${name}.route_allowed_ips='1'
+
+  commit network
+EOF
+}
+
+add_client 192.168.9.2 rtphone mV5wbW/tBw4ddIZgAL17dB0peTbqpcBGAmLOjNWDGSw=
+add_client 192.168.9.3 rtlap   HWMn0MASsucG8NpcfxdFZtYjS2Vstw/LKgFmnpJGOQs=
 
 exit 0
