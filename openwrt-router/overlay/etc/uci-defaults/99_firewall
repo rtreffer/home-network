@@ -79,6 +79,15 @@ config rule
         option family 'ipv6'
         option src_port '547'
 
+config redirect
+        option target 'DNAT'
+        option name 'lnd'
+        list proto 'tcp'
+        option src 'wan'
+        option src_dport '9735'
+        option dest 'lan'
+        option dest_ip '192.168.2.20'
+        option dest_port '9735'
 EOF
 
 uci commit firewall
