@@ -1,0 +1,17 @@
+#!/bin/sh
+
+source /etc/secrets/env
+
+uci -q batch <<-EOF >/dev/null
+  delete network.wg
+
+  set network.wg=interface
+  set network.wg.proto='wireguard'
+  set network.wg.private_key='${WG_KEY}'
+  set network.wg.listen_port=51820
+  add_list network.addr=192.168.9.1
+
+  commit network
+EOF
+
+exit 0
