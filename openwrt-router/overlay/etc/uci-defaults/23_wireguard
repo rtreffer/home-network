@@ -33,5 +33,6 @@ EOF
 
 add_client 192.168.9.2 rtphone mV5wbW/tBw4ddIZgAL17dB0peTbqpcBGAmLOjNWDGSw=
 add_client 192.168.9.3 rtlap   HWMn0MASsucG8NpcfxdFZtYjS2Vstw/LKgFmnpJGOQs=
+add_client 192.168.9.4 rtw     AlK7iDeOuXz8Cqyt+AgG+x2UHChyv+NkzZhA8RyscCc=
 
 exit 0
