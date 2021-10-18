@@ -27,9 +27,10 @@ $(eval $(call build-node,ap-balcony,21.02.0,ath79,generic,tplink_archer-c7-v2))
 
 $(eval $(call build-node,router,21.02.0,ramips,mt7621,ubnt_edgerouter-x))
 $(eval $(call build-node,switch,21.02.0,ramips,mt7621,ubnt_edgerouter-x))
+$(eval $(call build-node,otg,21.02.0,ramips,mt7620,ravpower_rp-wd03))
+$(eval $(call build-node,lte,21.02.0,ramips,mt7620,wrtnode_wrtnode))
 
 $(eval $(call build-node,dsl-router,snapshot,lantiq,xrx200,avm_fritz7362sl))
-$(eval $(call build-node,lte,snapshot,ramips,mt7620,wrtnode_wrtnode))
 
 clean:
 	@rm -rf ./target/*

@@ -1,0 +1,1 @@
+PACKAGES_VERSION=-kmod-ipt-offload -odhcpd-ipv6only -ppp -ppp-mod-pppoe -batctl -batctl-tiny batctl-full kmod-mii kmod-usb-net-qmi-wwan kmod-usb-serial kmod-usb-serial-option kmod-usb-serial-wwan kmod-usb-wdm kmod-usb-net kmod-usb-net-cdc-mbim wwan uqmi umbim usb-modeswitch luci-proto-qmi luci-proto-3g luci-proto-modemmanager

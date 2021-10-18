@@ -1,0 +1,24 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+
+  set network.wan=interface
+  set network.wan.proto='dhcp'
+  set network.wan.device='eth1'
+  set network.wan.ipv6='auto'
+
+  commit network
+
+EOF
+
+uci -q batch <<-EOF >/dev/null
+  set dhcp.@dnsmasq[0].domain=dhcp.otg.measite.de
+  set dhcp.@dnsmasq[0].local=/dhcp.otg.measite.de/
+  set dhcp.lan.start=100
+  set dhcp.lan.limit=254
+  set dhcp.lan.leasetime=24h
+  add_list dhcp.lan.dhcp_option=6,192.168.6.1
+  commit dhcp
+EOF
+
+exit 0

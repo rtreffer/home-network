@@ -1,0 +1,23 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  set system.@system[0].hostname='lte'
+  commit system
+EOF
+
+uci -q batch <<-EOF >/dev/null
+  set network.lan6=interface
+  set network.lan6.proto='dhcpv6'
+  set network.lan6.ifname='@lan'
+  set network.lan6.reqprefix='no'
+  commit network
+EOF
+
+uci -q batch <<-EOF >/dev/null
+  set network.lan.ipaddr='192.168.6.1'
+  set network.lan.macaddr='0C:80:63:F8:1B:76'
+  del network.lan.ip6assign
+  commit network
+EOF
+
+exit 0

@@ -1,0 +1,34 @@
+#!/bin/sh
+
+source /etc/secrets/env
+
+add_wireless() {
+  radio=$1
+  ssid=$2
+  pass=$3
+  radioid=$(echo ${radio}|tr -d 'a-z')
+uci -q batch <<-EOF >/dev/null
+set wireless.${radio}_${ssid}=wifi-iface
+set wireless.${radio}_${ssid}.device=${radio}
+set wireless.${radio}_${ssid}.network=lan
+set wireless.${radio}_${ssid}.mode=ap
+set wireless.${radio}_${ssid}.encryption=psk2
+set wireless.${radio}_${ssid}.auth_cache='1'
+set wireless.${radio}_${ssid}.disassoc_low_ack='0'
+set wireless.${radio}_${ssid}.ssid=${ssid}
+set wireless.${radio}_${ssid}.key=${pass}
+set wireless.${radio}_${ssid}.ieee80211w=1
+set wireless.${radio}_${ssid}.ieee80211r=1
+set wireless.${radio}_${ssid}.logger_syslog_level='1'
+set wireless.${radio}_${ssid}.time_advertisement='2'
+set wireless.${radio}_${ssid}.time_zone='CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00'
+EOF
+
+  uci commit wireless
+}
+
+add_wireless radio0 strahlenotg ${wifi_strahlenkanone_key}
+uci set wireless.radio0_strahlenotg.ssid=strahlen-otg
+uci commit wireless
+
+exit 0

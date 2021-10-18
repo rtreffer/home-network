@@ -1,0 +1,2 @@
+PACKAGES=odhcpd luci-app-unbound luci-app-wireguard luci-proto-wireguard wpad-mesh-openssl kmod-batman-adv prometheus-node-exporter-lua-nat_traffic -watchcat uboot-envtools socat
+NODE=lte
