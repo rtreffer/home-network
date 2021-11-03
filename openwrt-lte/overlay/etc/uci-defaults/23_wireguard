@@ -11,12 +11,12 @@ uci -q batch <<-EOF >/dev/null
   set network.wg.defaultroute=0
   set network.wg.peerdns=0
   add_list network.wg.dns='192.168.6.1'
-  add_list network.wg.addresses='192.168.9.8/32'
+  add_list network.wg.addresses='192.168.9.8/24'
 
   set network.wg_home=wireguard_wg
   set network.wg_home.description='home'
   set network.wg_home.public_key='LwkLzLRap/sCRWFM4fD6fWNkMjRFhABoXKeONzu6Njc='
-  add_list network.wg_home.allowed_ips='192.168.9.1/32'
+  add_list network.wg_home.allowed_ips='192.168.9.1/24'
   add_list network.wg_home.allowed_ips='192.168.2.1/24'
   set network.wg_home.route_allowed_ips='1'
   set network.wg_home.endpoint_host='homerouter.measite.de'

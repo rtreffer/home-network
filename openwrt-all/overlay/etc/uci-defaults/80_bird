@@ -64,10 +64,16 @@ protocol ospf {
                 };
 
                 interface "wg*" {
+                        type ptmp;
+                        tx length 1300;
                         cost 75;
-                        type broadcast;
                         hello 5; retransmit 2; wait 20; dead 60;
                         authentication cryptographic; password "${ospf_pass}";
+                        real broadcast;
+                        neighbors {
+                                192.168.9.1;
+                                192.168.9.8;
+                        };
                 };
 
                 interface -"wan*",-"ifwan*","*" {

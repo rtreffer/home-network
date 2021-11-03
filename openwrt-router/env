@@ -1,2 +1,2 @@
-PACKAGES=-hostapd -hostapd-common kmod-ipt-raw luci-app-upnp luci-app-wireguard luci-app-openvpn luci-proto-wireguard luci-app-ddns ddns-scripts-route53 ca-certificates ca-bundle prometheus-node-exporter-lua-nat_traffic hostapd-openssl kmod-batman-adv batctl-full ohybridproxy
+PACKAGES=-hostapd -hostapd-common kmod-ipt-raw luci-app-upnp luci-app-wireguard luci-app-openvpn luci-proto-wireguard luci-app-ddns ddns-scripts-route53 ca-certificates ca-bundle prometheus-node-exporter-lua-nat_traffic hostapd-openssl kmod-batman-adv batctl-full ohybridproxy qrencode -watchcat
 NODE=router

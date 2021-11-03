@@ -10,7 +10,12 @@ uci -q batch <<-EOF >/dev/null
   set network.wg.private_key='${WG_KEY}'
   set network.wg.listen_port=51820
   set network.wg.force_link='1'
-  add_list network.wg.addresses='192.168.9.1/24'
+  add_list network.wg.addresses='192.168.9.1/32'
+
+  set network.route_wg=route
+  set network.route_wg.interface='wg'
+  set network.route_wg.target='192.168.9.0'
+  set network.route_wg.netmask='255.255.255.0'
 
   commit network
 EOF
@@ -34,5 +39,9 @@ EOF
 add_client 192.168.9.2 rtphone mV5wbW/tBw4ddIZgAL17dB0peTbqpcBGAmLOjNWDGSw=
 add_client 192.168.9.3 rtlap   HWMn0MASsucG8NpcfxdFZtYjS2Vstw/LKgFmnpJGOQs=
 add_client 192.168.9.4 rtw     AlK7iDeOuXz8Cqyt+AgG+x2UHChyv+NkzZhA8RyscCc=
+add_client 192.168.9.8 otg     GATLfwhB1chmiwYCD1mquV9C7RHiv0IjMp0vqmZ6o2U=
+
+uci add_list network.wg_otg.allowed_ips='192.168.6.0/24'
+uci commit network
 
 exit 0

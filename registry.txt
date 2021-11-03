@@ -66,6 +66,10 @@ Not adding a device will later on cause issues.
   - 192.168.3.7 ap-living
   - 192.168.3.8 ap-guest
 
+192.168.6.0/24 - on the go network
+
+192.168.9.0/24 - wireguard VPN
+
 # Freifunk
 
 - rt-tunnel (offloader)
@@ -123,7 +127,6 @@ ac:84:c6:29:03:d9 TP-Link HS110 WiFi Smart Plug
 34:ab:37:ed:48:69 Nina iPhone
 
 dc:a6:32:f2:f3:aa rpi / bolt
-dc:a6:32:c2:4d:a9 rpi / bolt-old
 
 # MAC registry, removed
 
