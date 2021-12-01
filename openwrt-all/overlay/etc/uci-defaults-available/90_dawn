@@ -7,13 +7,14 @@ uci -q batch <<-EOF >/dev/null
 set dawn.@network[0].shared_key='${dawn_key}'
 set dawn.@network[0].iv='${dawn_iv}'
 set dawn.@network[0].collision_domain='1'
-set dawn.@metric[0].ht_support='10'
-set dawn.@metric[0].vht_support='100'
-set dawn.@metric[0].eval_probe_req='0'
+#set dawn.@metric[0].ht_support='10'
+#set dawn.@metric[0].vht_support='100'
+set dawn.@metric[0].eval_probe_req='1'
 set dawn.@metric[0].eval_auth_req='1'
 set dawn.@metric[0].eval_assoc_req='1'
-set dawn.@times[0].update_beacon_reports='0'
-set dawn.@times[0].update_chan_util='0'
+set dawn.@metric[0].kicking='0'
+set dawn.@times[0].update_beacon_reports='600'
+set dawn.@times[0].update_chan_util='5'
 EOF
 
 # umdns may fail due to seccomp

@@ -73,6 +73,7 @@ uci -q batch <<-EOF >/dev/null
   set dhcp.lan.start=100
   set dhcp.lan.limit=254
   set dhcp.lan.leasetime=24h
+  add_list dns=192.168.2.7,192.168.2.8,192.168.2.5
   add_list dhcp.lan.dhcp_option=6,192.168.2.7,192.168.2.8,192.168.2.5
   commit dhcp
 EOF
