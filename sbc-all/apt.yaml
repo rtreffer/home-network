@@ -1,2 +1,19 @@
 ---
 preserve_sources_list: true
+packages:
+  - unattended-upgrades
+write_files:
+  - path: /etc/apt/apt.conf.d/99-cc-unattended-upgrades
+    permissions: '0644'
+    owner: 'root:root'
+    content: |
+      APT::Periodic::Update-Package-Lists "1";
+      APT::Periodic::Unattended-Upgrade "1";
+      Unattended-Upgrade::DevRelease "true";
+      Unattended-Upgrade::AutoFixInterruptedDpkg "true";
+      Unattended-Upgrade::SyslogEnable "true";
+      Unattended-Upgrade::Verbose "true";
+      Unattended-Upgrade::Allowed-Origins {
+        "${distro_id}:${distro_codename}";
+        "${distro_id}:${distro_codename}-security";
+      };

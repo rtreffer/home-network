@@ -1,0 +1,4 @@
+local_hostname: prometheus
+local-hostname: prometheus
+instance_id: prometheus
+instance-id: prometheus

@@ -1,0 +1,20 @@
+---
+disable_root: 0
+system_info:
+  default_user:
+    name: root
+users:
+  - name: root
+    lock_passwd: true
+    ssh_authorized_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACEwMrCmjNAAB7Rh4SlLkS6POXuuf6lkQlr/gRTE8mAsTmqXxCDbxmjX2nVJ/usnTrcT06+6t27LHYTQwu5mmhJ0+unvMPEM2RL1iGsgyOorWjgR0EqNjiDMD05jOcrS3EO13EKxEPwRtSGDVFtDxO+Lhwjvzi78SMciW+6lfxeNp8GFlvYZVSQqwKKnOoGgUO2spU+MTBoHqa1KJt8GmmcOHUDqh3zJsnkI32oIYIlZL06+QPTKhw+uCTQ7yviRgWHeplRlSQHlrbfUaxmbDWs0lx1KyKgVLW4/tidWbgKLruEz82BvHz4Y60hlvdI3MwJcIvbExe6vxQ/nzW9Eqn2EkdjA9yZ/fpY46jD6fadAn3rkrV8BIn/jLHqiTuh8Nc/ymI1WDEfUr+eZKddvyaNZutlnmoafxWhrUPPjpojJg0cj02WDcD4RyCYT7hq5qsWPWzeyb/xFHbqhXFVils1rNVBJogrWIfUS/tSTXTFgNoQbR9+A0fguI0kJ12ohF3b3SB+62Puff12XVLF2qjyWcbEcb1aN/Oy1PqiVvVm2kqgiubNHrTJcY86Z4D59Rr9e1cmmrH2KkjQpUQHFMKaUZ4RDlhvIf4OQXfr4eT60KNIsQM9v/jdIkjst+IhH+lsvRXKYJmsI4lZDqSreGpaSXQxcRAkLwRYIy1ZhD23M/T5AKwbhtVmA7s8dHHkwUqSpXTew== rtreffer@metal"
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII4//4wXQycDZPEOYITyde07XBjbOqqhZ1lY8MACHXzD rtreffer@metal"
+  - name: rtreffer
+    sudo: "ALL=(ALL:ALL) NOPASSWD: ALL"
+    groups: users, admin, sudo
+    shell: /bin/bash
+    lock_passwd: false
+    passwd: "{{ .rtreffer_shadow }}"
+    ssh_authorized_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACEwMrCmjNAAB7Rh4SlLkS6POXuuf6lkQlr/gRTE8mAsTmqXxCDbxmjX2nVJ/usnTrcT06+6t27LHYTQwu5mmhJ0+unvMPEM2RL1iGsgyOorWjgR0EqNjiDMD05jOcrS3EO13EKxEPwRtSGDVFtDxO+Lhwjvzi78SMciW+6lfxeNp8GFlvYZVSQqwKKnOoGgUO2spU+MTBoHqa1KJt8GmmcOHUDqh3zJsnkI32oIYIlZL06+QPTKhw+uCTQ7yviRgWHeplRlSQHlrbfUaxmbDWs0lx1KyKgVLW4/tidWbgKLruEz82BvHz4Y60hlvdI3MwJcIvbExe6vxQ/nzW9Eqn2EkdjA9yZ/fpY46jD6fadAn3rkrV8BIn/jLHqiTuh8Nc/ymI1WDEfUr+eZKddvyaNZutlnmoafxWhrUPPjpojJg0cj02WDcD4RyCYT7hq5qsWPWzeyb/xFHbqhXFVils1rNVBJogrWIfUS/tSTXTFgNoQbR9+A0fguI0kJ12ohF3b3SB+62Puff12XVLF2qjyWcbEcb1aN/Oy1PqiVvVm2kqgiubNHrTJcY86Z4D59Rr9e1cmmrH2KkjQpUQHFMKaUZ4RDlhvIf4OQXfr4eT60KNIsQM9v/jdIkjst+IhH+lsvRXKYJmsI4lZDqSreGpaSXQxcRAkLwRYIy1ZhD23M/T5AKwbhtVmA7s8dHHkwUqSpXTew== rtreffer@metal"
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII4//4wXQycDZPEOYITyde07XBjbOqqhZ1lY8MACHXzD rtreffer@metal"

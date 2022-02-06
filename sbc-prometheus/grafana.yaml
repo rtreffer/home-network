@@ -1,0 +1,49 @@
+---
+users:
+  - name: grafana
+    uid: 472
+    homedir: /srv/grafana
+    shell: /sbin/nologin
+    lock_passwd: true
+write_files:
+  - owner: root:root
+    permissions: '0644'
+    path: /srv/grafana/grafana.ini
+    content: |
+      [analytics]
+      reporting_enabled=false
+      check_for_updates=false
+      [security]
+      admin_user=admin
+      admin_password=admin
+      [users]
+      allow_sign_up=false
+      allow_org_create=false
+      auto_assign_org=true
+      auto_assign_org_role=Admin
+      [auth]
+      disable_login_form=true
+      disable_signout_menu=true
+      [auth.anonymous]
+      enabled=true
+      org_role=Admin
+  - owner: root:root
+    path: /etc/systemd/system/grafana.service
+    content: |
+      [Unit]
+      Description=grafana container
+      [Service]
+      WorkingDirectory=/srv/grafana
+      ExecStartPre=-/usr/bin/podman pull registry.docker.com/grafana/grafana-oss:latest-ubuntu
+      ExecStart=/usr/bin/podman run --net slirp4netns --env GF_PATHS_CONFIG=/var/lib/grafana/grafana.ini --rm --userns=host --mount=type=bind,src=/srv/grafana,dst=/var/lib/grafana --publish 80:3000 registry.docker.com/grafana/grafana-oss:latest-ubuntu
+      Restart=always
+      [Install]
+      WantedBy=multi-user.target
+packages:
+  - podman-docker
+  - podman
+runcmd:
+  - [ chown, grafana, /srv/grafana ]
+  - [ systemctl, daemon-reload ]
+  - [ systemctl, enable, grafana.service ]
+  - [ systemctl, start, grafana.service ]

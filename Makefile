@@ -2,9 +2,7 @@ include build/sbc.mk
 include build/openwrt.mk
 
 # sbc nodes
-#$(eval $(call build-sbc-node,openhab,tinkerboard,armbian-beta-bionic))
 $(eval $(call build-sbc-node,openhab,rpi3,ubuntu-bionic-arm64))
-$(eval $(call build-sbc-node,prometheus,rpi3,ubuntu-focal-arm64))
 $(eval $(call build-sbc-node,mqtt,rpi3,ubuntu-cosmic-arm64))
 
 # openwrt build container
@@ -31,6 +29,17 @@ $(eval $(call build-node,otg,21.02.1,ramips,mt7620,ravpower_rp-wd03))
 $(eval $(call build-node,lte,21.02.1,ramips,mt7620,wrtnode_wrtnode))
 
 $(eval $(call build-node,dsl-router,snapshot,lantiq,xrx200,avm_fritz7362sl))
+
+target/ubuntu-22.04-prometheus.img: $(wildcard sbc-all/*) $(wildcard sbc-prometheus/*)
+	piccu --output $@ \
+	      --ubuntu jammy \
+	      --plain sbc-all/env --plain sbc-prometheus/env --pass sbc \
+	      --boot.firmware.file sbc-prometheus/meta-data \
+	      --boot.firmware.file sbc-prometheus/network-config \
+	      sbc-all/ \
+	      sbc-prometheus/
+
+prometheus: target/ubuntu-22.04-prometheus.img
 
 clean:
 	@rm -rf ./target/*

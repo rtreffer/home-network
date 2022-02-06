@@ -7,9 +7,17 @@ write_files:
     permissions: '0644'
     content: |
       ARGS="\
+      --collector.cpu.info \
       --collector.diskstats.ignored-devices=^(ram|loop|fd|(h|s|v|xv)d[a-z]|nvme\\d+n\\d+p)\\d+$ \
-      --collector.filesystem.ignored-mount-points=^/(sys|proc|dev|run)($|/) \
-      --collector.netdev.ignored-devices=^lo$ \
+      --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|run)($|/) \
+      --collector.netdev.device-exclude==^lo$ \
+      --collector.netdev.address-info \
+      --collector.netstat.fields=".*" \
+      --collector.systemd.enable-task-metrics \
+      --collector.systemd.enable-start-time-metrics \
+      --collector.vmstat.fields=".*" \
+      --collector.mountstats \
+      --collector.network_route \
       --collector.textfile.directory=/var/lib/prometheus/node-exporter \
       --collector.ksmd \
       --collector.qdisc \
