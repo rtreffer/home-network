@@ -1,0 +1,19 @@
+---
+packages:
+  - tlp
+write_files:
+  - path: /etc/tlp.d/50-pi.conf
+    owner: root:root
+    permissions: '0644'
+    content: |
+      TLP_ENABLE=1
+      TLP_DEFAULT_MODE=AC
+      DISK_IDLE_SECS_ON_AC=2
+      MAX_LOST_WORK_SECS_ON_AC=60
+      CPU_SCALING_GOVERNOR_ON_AC=schedutil
+      DISK_DEVICES="mmcblk0 sda nvme0n1"
+      DISK_APM_LEVEL_ON_AC="127 127 127"
+      DISK_IOSCHED="mq-deadline mq-deadline mq-deadline"
+runcmd:
+  - [ systemctl, enable, tlp ]
+  - [ systemctl, restart, tlp ]
