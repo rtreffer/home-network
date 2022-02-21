@@ -1,2 +1,2 @@
-PACKAGES=-dnsmasq -odhcpd wpad-mesh-openssl watchcat kmod-batman-adv batctl ohybridproxy prometheus-node-exporter-lua-hostapd_stations
+PACKAGES=-dnsmasq -odhcpd wpad-mesh-openssl watchcat kmod-batman-adv batctl ohybridproxy prometheus-node-exporter-lua-dawn prometheus-node-exporter-lua-hostapd_stations
 NODE=ap-max
