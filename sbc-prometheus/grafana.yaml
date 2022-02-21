@@ -22,8 +22,8 @@ write_files:
       auto_assign_org=true
       auto_assign_org_role=Admin
       [auth]
-      disable_login_form=true
-      disable_signout_menu=true
+      disable_login_form=false
+      disable_signout_menu=false
       [auth.anonymous]
       enabled=true
       org_role=Admin
@@ -35,7 +35,7 @@ write_files:
       [Service]
       WorkingDirectory=/srv/grafana
       ExecStartPre=-/usr/bin/podman pull registry.docker.com/grafana/grafana-oss:latest-ubuntu
-      ExecStart=/usr/bin/podman run --net slirp4netns --env GF_PATHS_CONFIG=/var/lib/grafana/grafana.ini --rm --userns=host --mount=type=bind,src=/srv/grafana,dst=/var/lib/grafana --publish 80:3000 registry.docker.com/grafana/grafana-oss:latest-ubuntu
+      ExecStart=/usr/bin/podman run --net slirp4netns --env GF_INSTALL_PLUGINS=grafana-clock-panel,neocat-cal-heatmap-panel,grafana-piechart-panel,snuids-radar-panel,magnesium-wordcloud-panel --env GF_PATHS_CONFIG=/var/lib/grafana/grafana.ini --rm --userns=host --mount=type=bind,src=/srv/grafana,dst=/var/lib/grafana --publish 80:3000 registry.docker.com/grafana/grafana-oss:latest-ubuntu
       Restart=always
       [Install]
       WantedBy=multi-user.target
