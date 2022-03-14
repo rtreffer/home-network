@@ -14,8 +14,9 @@ uci -q batch <<-EOF >/dev/null
 EOF
 
 uci -q batch <<-EOF >/dev/null
+  add_list network.@device[0].ports='wan'
   set network.lan.ipaddr='192.168.2.7'
-  set network.lan.macaddr='E8:DE:27:C8:AC:BF'
+  set network.lan.macaddr='5C:92:5E:3C:8B:B0'
   del network.lan.ip6assign
   commit network
 EOF
