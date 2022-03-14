@@ -21,7 +21,7 @@ Not adding a device will later on cause issues.
     - 192.168.2.11 - pvr.local
     - 192.168.2.16 - devnull.local
     - 192.168.2.20 - bolt.local
-    - 192.168.2.21 - bolt-old.local
+    - 192.168.2.21 - kakerlake.local
     - 192.168.2.26 - mqtt.local
     - 192.168.2.27 - RaspberryMatic
     - 192.168.2.28 - prometheus.local

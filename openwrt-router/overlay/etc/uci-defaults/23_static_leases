@@ -46,6 +46,6 @@ static_lease 'nina-iphone'        '34:ab:37:ed:48:69' '192.168.2.90'
 static_lease 'rene-android'       '94:65:2d:a5:9c:44' '192.168.2.91'
 
 static_lease 'bolt'               'dc:a6:32:f2:f3:aa' '192.168.2.20'
-static_lease 'bolt-old'           'dc:a6:32:c2:4d:a9' '192.168.2.21'
+static_lease 'kakerlake'          'dc:a6:32:23:45:90' '192.168.2.21'
 
 exit 0
