@@ -18,8 +18,8 @@ $(eval $(call openwrt-build-container,21.02.2,ath79,generic))
 
 # openwrt nodes
 $(eval $(call build-node,ap-living,21.02.2,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-bedroom,21.02.2,ath79,generic,tplink_archer-c5-v1))
-$(eval $(call build-node,ap-guest,21.02.2,ath79,generic,tplink_archer-c7-v5))
+$(eval $(call build-node,ap-bedroom,21.02.2,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-guest,21.02.2,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-max,21.02.2,ath79,generic,tplink_archer-c7-v2))
 $(eval $(call build-node,ap-balcony,21.02.2,ath79,generic,tplink_archer-c7-v2))
 
