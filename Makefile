@@ -14,17 +14,19 @@ $(eval $(call openwrt-build-container,21.02.2,ramips,mt7621))
 $(eval $(call openwrt-build-container,21.02.2,ramips,mt7620))
 $(eval $(call openwrt-build-container,21.02.2,lantiq,xrx200))
 $(eval $(call openwrt-build-container,21.02.2,ath79,generic))
+$(eval $(call openwrt-build-container,22.03-SNAPSHOT,ath79,generic))
+$(eval $(call openwrt-build-container,22.03-SNAPSHOT,ramips,mt7621))
 
 
 # openwrt nodes
-$(eval $(call build-node,ap-living,21.02.2,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-bedroom,21.02.2,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-guest,21.02.2,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-max,21.02.2,ath79,generic,tplink_archer-c7-v2))
-$(eval $(call build-node,ap-balcony,21.02.2,ath79,generic,tplink_archer-c7-v2))
+$(eval $(call build-node,ap-living,22.03-SNAPSHOT,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-bedroom,22.03-SNAPSHOT,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-guest,22.03-SNAPSHOT,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-max,22.03-SNAPSHOT,ath79,generic,tplink_archer-c7-v2))
+$(eval $(call build-node,ap-balcony,22.03-SNAPSHOT,ath79,generic,tplink_archer-c7-v2))
 
 $(eval $(call build-node,router,21.02.2,ramips,mt7621,ubnt_edgerouter-x))
-$(eval $(call build-node,switch,21.02.2,ramips,mt7621,ubnt_edgerouter-x))
+$(eval $(call build-node,switch,22.03-SNAPSHOT,ramips,mt7621,ubnt_edgerouter-x))
 $(eval $(call build-node,otg,21.02.2,ramips,mt7620,ravpower_rp-wd03))
 $(eval $(call build-node,lte,21.02.2,ramips,mt7620,wrtnode_wrtnode))
 

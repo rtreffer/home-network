@@ -91,6 +91,16 @@ ap-guest
 - 0C:80:63:F7:1A:78 2.4GHz
 - 0C:80:63:F7:1A:76 ethernet
 
+00:14:4F:FC:<4th byte ip>:<interface>
+
+ap-bedroom = 192.168.2.5
+=> 00:14:4F:FC:05:__
+00:14:4F:FC:05:01 = br-lan
+00:14:4F:FC:05:10 = wifi ap 0
+00:14:4F:FC:05:11 = wifi ap 1
+[...]
+00:14:4F:FC:05:20 = batman
+
 ## Misc devices
 
 b4:b5:2f:f5:86:7c HP M175nw Laserprinter
@@ -107,19 +117,6 @@ b8:27:eb:a8:d1:01 Phoniebox
 54:60:09:d8:e2:1c Chromecast Audio
 54:60:09:e7:69:4e Chromecast Audio
 
-ac:84:c6:59:ca:9f TP-Link HS110 WiFi Smart Plug
-50:c7:bf:0b:90:e8 TP-Link HS110 WiFi Smart Plug
-50:c7:bf:0b:88:3b TP-Link HS110 WiFi Smart Plug
-50:c7:bf:0b:8b:b0 TP-Link HS110 WiFi Smart Plug
-50:c7:bf:0b:8d:27 TP-Link HS110 WiFi Smart Plug
-50:c7:bf:28:bd:d9 TP-Link HS110 WiFi Smart Plug
-ac:84:c6:28:fd:53 TP-Link HS110 WiFi Smart Plug
-ac:84:c6:29:16:34 TP-Link HS110 WiFi Smart Plug
-ac:84:c6:5d:9d:3d TP-Link HS110 WiFi Smart Plug
-ac:84:c6:3b:b4:2f TP-Link HS110 WiFi Smart Plug
-ac:84:c6:3b:b1:35 TP-Link HS110 WiFi Smart Plug
-ac:84:c6:29:03:d9 TP-Link HS110 WiFi Smart Plug
-
 7c:2f:80:b1:c3:1c Gigaset N510-IP-PRO VoIP/DECT gateway
 00:0a:e2:04:0a:b9 AEG SMART64 Dect telephone
 
@@ -133,3 +130,17 @@ dc:a6:32:f2:f3:aa rpi / bolt
 7c:2f:80:b1:c3:1c sky receiver
 f0:27:2d:18:1a:6c FireTV
 00:17:88:0a:68:4a Philips Hue Gatway (1st gen)
+
+ac:84:c6:59:ca:9f TP-Link HS110 WiFi Smart Plug
+50:c7:bf:0b:90:e8 TP-Link HS110 WiFi Smart Plug
+50:c7:bf:0b:88:3b TP-Link HS110 WiFi Smart Plug
+50:c7:bf:0b:8b:b0 TP-Link HS110 WiFi Smart Plug
+50:c7:bf:0b:8d:27 TP-Link HS110 WiFi Smart Plug
+50:c7:bf:28:bd:d9 TP-Link HS110 WiFi Smart Plug
+ac:84:c6:28:fd:53 TP-Link HS110 WiFi Smart Plug
+ac:84:c6:29:16:34 TP-Link HS110 WiFi Smart Plug
+ac:84:c6:5d:9d:3d TP-Link HS110 WiFi Smart Plug
+ac:84:c6:3b:b4:2f TP-Link HS110 WiFi Smart Plug
+ac:84:c6:3b:b1:35 TP-Link HS110 WiFi Smart Plug
+ac:84:c6:29:03:d9 TP-Link HS110 WiFi Smart Plug
+

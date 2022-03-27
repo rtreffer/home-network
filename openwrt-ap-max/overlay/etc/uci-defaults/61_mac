@@ -1,0 +1,20 @@
+#!/bin/sh
+
+uci set 'wireless.@wifi-iface[0].macaddr=00:14:4f:fc:03:10' || :
+uci set 'wireless.@wifi-iface[1].macaddr=00:14:4f:fc:03:11' || :
+uci set 'wireless.@wifi-iface[2].macaddr=00:14:4f:fc:03:12' || :
+uci set 'wireless.@wifi-iface[3].macaddr=00:14:4f:fc:03:13' || :
+uci set 'wireless.@wifi-iface[4].macaddr=00:14:4f:fc:03:14' || :
+uci set 'wireless.@wifi-iface[5].macaddr=00:14:4f:fc:03:15' || :
+uci set 'wireless.@wifi-iface[6].macaddr=00:14:4f:fc:03:16' || :
+uci set 'wireless.@wifi-iface[7].macaddr=00:14:4f:fc:03:17' || :
+uci set 'wireless.@wifi-iface[8].macaddr=00:14:4f:fc:03:18' || :
+uci set 'wireless.@wifi-iface[9].macaddr=00:14:4f:fc:03:19' || :
+uci set 'wireless.@wifi-iface[10].macaddr=00:14:4f:fc:03:1a' || :
+uci set 'wireless.@wifi-iface[11].macaddr=00:14:4f:fc:03:1b' || :
+uci set 'wireless.@wifi-iface[12].macaddr=00:14:4f:fc:03:1c' || :
+uci set 'wireless.@wifi-iface[13].macaddr=00:14:4f:fc:03:1d' || :
+uci set 'wireless.@wifi-iface[14].macaddr=00:14:4f:fc:03:1e' || :
+uci set 'wireless.@wifi-iface[15].macaddr=00:14:4f:fc:03:1f' || :
+
+uci commit wireless || :
