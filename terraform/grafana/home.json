@@ -561,7 +561,7 @@
             "uid": "zgOqsJB7k"
           },
           "exemplar": true,
-          "expr": "sum by (frequency) (wifi_stations * on (ifname, instance) group_left(frequency) (max by (ifname, frequency,instance) (wifi_network_noise_dbm) / max by (ifname, frequency, instance) (wifi_network_noise_dbm{ssid!=\"strahlenmesh\"})))",
+          "expr": "sum by (frequency) (wifi_stations * on (ifname, instance) group_left(frequency) count by (ifname, frequency, instance) (max by (ifname, frequency,instance) (wifi_network_noise_dbm{ssid!=\"strahlenmesh\"}))) > 0",
           "interval": "",
           "legendFormat": "{{frequency}}",
           "refId": "Frequency"
