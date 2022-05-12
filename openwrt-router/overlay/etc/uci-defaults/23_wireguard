@@ -40,6 +40,7 @@ add_client 192.168.9.2 rtphone mV5wbW/tBw4ddIZgAL17dB0peTbqpcBGAmLOjNWDGSw=
 add_client 192.168.9.3 rtlap   HWMn0MASsucG8NpcfxdFZtYjS2Vstw/LKgFmnpJGOQs=
 add_client 192.168.9.4 metal   Pd4ib4rxUJN3dxhgWhY+oRN7279onhpSxRlbv2ikskE=
 add_client 192.168.9.8 otg     GATLfwhB1chmiwYCD1mquV9C7RHiv0IjMp0vqmZ6o2U=
+add_client 192.168.9.9 s22     R3V784AbEqeaHQty6M1wgmDzhU1p6IT7ofsRgpYhFRQ=
 
 uci add_list network.wg_otg.allowed_ips='192.168.6.0/24'
 uci commit network
