@@ -67,8 +67,10 @@ Not adding a device will later on cause issues.
   - 192.168.3.8 ap-guest
 
 192.168.6.0/24 - on the go network
+192.168.7.0/24 - temporary on the go
 
 192.168.9.0/24 - wireguard VPN
+192.168.9.5    - temporaty on the go
 
 # Freifunk
 
