@@ -1,0 +1,20 @@
+version: 2
+ethernets:
+  all-en:
+    match:
+      name: "en*"
+    addresses:
+      - 192.168.2.59/24
+    gateway4: 192.168.2.1
+    nameservers:
+      search: [ "home.measite.de", "local" ]
+      addresses: [ "192.168.2.7", "192.168.2.6", "192.168.2.5" ]
+  all-eth:
+    match:
+      name: "eth*"
+    addresses:
+      - 192.168.2.59/24
+    gateway4: 192.168.2.1
+    nameservers:
+      search: [ "home.measite.de", "local" ]
+      addresses: [ "192.168.2.7", "192.168.2.6", "192.168.2.5" ]

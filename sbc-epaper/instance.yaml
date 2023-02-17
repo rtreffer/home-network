@@ -1,0 +1,4 @@
+preserve_hostname: false
+prefer_fqdn_over_hostname: false
+fqdn: epaper.home.measite.de
+hostname: epaper

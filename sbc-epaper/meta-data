@@ -1,0 +1,4 @@
+local_hostname: epaper
+local-hostname: epaper
+instance_id: epaper
+instance-id: epaper
