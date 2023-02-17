@@ -10,27 +10,23 @@ $(eval $(call openwrt-build-container,snapshot,ramips,mt7621))
 $(eval $(call openwrt-build-container,snapshot,ramips,mt7620))
 $(eval $(call openwrt-build-container,snapshot,lantiq,xrx200))
 $(eval $(call openwrt-build-container,snapshot,ath79,generic))
-$(eval $(call openwrt-build-container,21.02.2,ramips,mt7621))
-$(eval $(call openwrt-build-container,21.02.2,ramips,mt7620))
-$(eval $(call openwrt-build-container,21.02.2,lantiq,xrx200))
-$(eval $(call openwrt-build-container,21.02.2,ath79,generic))
-$(eval $(call openwrt-build-container,22.03.2,ath79,generic))
-$(eval $(call openwrt-build-container,22.03.2,ramips,mt7621))
-$(eval $(call openwrt-build-container,22.03.2,ath79,generic))
-$(eval $(call openwrt-build-container,22.03.2,ramips,mt7621))
+$(eval $(call openwrt-build-container,22.03.3,ath79,generic))
+$(eval $(call openwrt-build-container,22.03.3,ramips,mt7621))
+$(eval $(call openwrt-build-container,22.03.3,ath79,generic))
+$(eval $(call openwrt-build-container,22.03.3,ramips,mt7621))
 
 
 # openwrt nodes
-$(eval $(call build-node,ap-living,22.03.2,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-bedroom,22.03.2,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-guest,22.03.2,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-max,22.03.2,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-balcony,22.03.2,ath79,generic,tplink_archer-c7-v2))
+$(eval $(call build-node,ap-living,22.03.3,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-bedroom,22.03.3,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-guest,22.03.3,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-max,22.03.3,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-balcony,22.03.3,ath79,generic,tplink_archer-c7-v2))
 
-$(eval $(call build-node,router,22.03.2,ramips,mt7621,ubnt_edgerouter-x))
-$(eval $(call build-node,switch,22.03.2,ramips,mt7621,ubnt_edgerouter-x))
-$(eval $(call build-node,otg,21.02.2,ramips,mt7620,ravpower_rp-wd03))
-$(eval $(call build-node,lte,21.02.2,ramips,mt7620,wrtnode_wrtnode))
+$(eval $(call build-node,router,22.03.3,ramips,mt7621,ubnt_edgerouter-x))
+$(eval $(call build-node,switch,22.03.3,ramips,mt7621,ubnt_edgerouter-x))
+$(eval $(call build-node,otg,21.02.3,ramips,mt7620,ravpower_rp-wd03))
+$(eval $(call build-node,lte,21.02.3,ramips,mt7620,wrtnode_wrtnode))
 
 $(eval $(call build-node,dsl-router,snapshot,lantiq,xrx200,avm_fritz7362sl))
 
@@ -44,6 +40,17 @@ target/ubuntu-22.04-prometheus.img: $(wildcard sbc-all/*) $(wildcard sbc-prometh
 	      sbc-prometheus/
 
 prometheus: target/ubuntu-22.04-prometheus.img
+
+target/ubuntu-22.04-epaper.img: $(wildcard sbc-all/*) $(wildcard sbc-prometheus/*)
+	piccu --output $@ \
+		--ubuntu jammy \
+		--plain sbc-all/env --plain sbc-prometheus/env \
+		--boot.firmware.file sbc-epaper/meta-data \
+		--boot.firmware.file sbc-epaper/network-config \
+		sbc-all/ \
+		sbc-epaper/
+
+epaper: target/ubuntu-22.04-epaper.img
 
 clean:
 	@rm -rf ./target/*
