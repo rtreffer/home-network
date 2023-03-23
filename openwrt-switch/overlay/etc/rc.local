@@ -1,0 +1,5 @@
+ethtool -A eth0 autoneg off || :
+ethtool -A eth1 autoneg off || :
+ethtool -A eth2 autoneg off || :
+ethtool -A eth3 autoneg off || :
+ethtool -A eth4 autoneg off || :

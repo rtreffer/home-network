@@ -10,3 +10,10 @@ ifconfig bat0 192.168.3.5 netmask 255.255.255.0 up
 if rm /etc/seccomp/umdns.json; then
   /etc/init.d/umdns restart || true
 fi
+
+# disable ethernet pause frames
+ethtool -A eth0 autoneg off || :
+ethtool -A lan1 autoneg off || :
+ethtool -A lan2 autoneg off || :
+ethtool -A lan3 autoneg off || :
+ethtool -A lan4 autoneg off || :
