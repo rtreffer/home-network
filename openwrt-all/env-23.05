@@ -1,0 +1,1 @@
+BASE_PACKAGES_VERSION=-unbound-daemon-heavy -wpad-basic-wolfssl -wpad-basic-mbedtls -libustream-mbedtls unbound-daemon ethtool
