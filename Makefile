@@ -14,13 +14,14 @@ $(eval $(call openwrt-build-container,22.03.3,ath79,generic))
 $(eval $(call openwrt-build-container,22.03.3,ramips,mt7621))
 $(eval $(call openwrt-build-container,22.03.3,ath79,generic))
 $(eval $(call openwrt-build-container,22.03.3,ramips,mt7621))
+$(eval $(call openwrt-build-container,23.05.0-rc1,ramips,mt7621))
 
 
 # openwrt nodes
-$(eval $(call build-node,ap-living,22.03.3,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-living,23.05.0-rc1,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-bedroom,22.03.3,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-guest,22.03.3,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-max,22.03.3,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-max,23.05.0-rc1,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-balcony,22.03.3,ath79,generic,tplink_archer-c7-v2))
 
 $(eval $(call build-node,router,22.03.3,ramips,mt7621,ubnt_edgerouter-x))
