@@ -1,0 +1,21 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  set dhcp.@dnsmasq[0].domain=dhcp.home.measite.de
+  set dhcp.@dnsmasq[0].local=/dhcp.home.measite.de/
+  set dhcp.@dnsmasq[0].port=5355
+  add_list dhcp.@dnsmasq[0].interface=lan
+
+  delete dhcp.lan
+  set dhcp.switch=dhcp
+  set dhcp.switch.interface='lan'
+  set dhcp.switch.dhcpv4='server'
+  set dhcp.switch.domain='dhcp.home.measite.de'
+  set dhcp.switch.start=100
+  set dhcp.switch.limit=254
+  set dhcp.siwtch.leasetime=24h
+  add_list dhcp.switch.dns=192.168.2.7,192.168.2.8,192.168.2.5
+  add_list dhcp.switch.dhcp_option=6,192.168.2.7,192.168.2.8,192.168.2.5
+  commit dhcp
+EOF
+

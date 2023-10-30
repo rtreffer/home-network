@@ -6,19 +6,20 @@ Not adding a device will later on cause issues.
 # IP registry
 
 - 192.168.2.0/24 - main network
-  - 192.168.2.[0-15] - network devices (assigned)
-    - 192.168.2.1  - router (dhcp, vpn, ...)
+  - 192.168.2.[0-10] - network devices (assigned)
+    - 192.168.2.1  - router (vpn, ...)
     - 192.168.2.2  - lte
-    - 192.168.2.3  - ap-max
+    - 192.168.2.3  - ap-max, dns3
     - 192.168.2.4  - ap-balcony
-    - 192.168.2.5  - ap-bedroom, dns3
-    - 192.168.2.6  - ap-work, dns2
-    - 192.168.2.7  - ap-living, dns1
+    - 192.168.2.5  - ap-bedroom
+    - 192.168.2.6  - core-switch, dns1, dhcp
+    - 192.168.2.7  - ap-living, dns2
     - 192.168.2.8  - ap-guest
-    - 192.168.2.9  - ffgateway
+    - 192.168.2.9  - 
     - 192.168.2.10 - switch
   - 192.168.2.[12][0-9]: static machine ips (assigned)
     - 192.168.2.11 - pvr.local
+    - 192.168.2.13 - fallback
     - 192.168.2.16 - devnull.local
     - 192.168.2.20 - bolt.local
     - 192.168.2.21 - kakerlake.local

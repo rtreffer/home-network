@@ -13,9 +13,17 @@ protocol device {
         scan time 10;
 }
 
+filter set_krt_metric {
+        if defined( ospf_metric2 ) && ospf_metric2 > 0 && ospf_metric2 < 16777215 then {
+                krt_metric = ospf_metric2;
+        }
+        accept "accepted";
+}
+
 protocol kernel {
         learn;
         export all;
+        export filter set_krt_metric;
         import all;
         debug all;
         scan time 10;
@@ -36,6 +44,12 @@ protocol ospf {
 
         area 0 {
                 interface "br-lan" {
+                        cost 10;
+                        type broadcast;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                };
+                interface "switch.1" {
                         cost 10;
                         type broadcast;
                         hello 5; retransmit 2; wait 20; dead 60;

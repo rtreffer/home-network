@@ -1,0 +1,38 @@
+#!/bin/sh
+
+static_lease() {
+  name=$1
+  mac=$2
+  ip=$3
+  section=$(echo "${name}"|tr '-' '_')
+uci -q batch <<-EOF >/dev/null
+  set dhcp.${section}=host
+  set dhcp.${section}.name=${name}
+  set dhcp.${section}.mac=${mac}
+  set dhcp.${section}.ip=${ip}
+  commit dhcp
+EOF
+}
+
+static_lease 'hue-gateway'        '00:17:88:a6:55:32' '192.168.2.30'
+
+static_lease 'sky'                 '7c:2f:80:b1:c3:1c' '192.168.2.48'
+static_lease 'harmonyhub'          'c8:db:26:07:09:c2' '192.168.2.49'
+static_lease 'chromecast-living'   '54:60:09:fc:0f:68' '192.168.2.50'
+static_lease 'chromecast-balcony'  '54:60:09:d8:e2:1c' '192.168.2.51'
+static_lease 'chromecast-bathroom' '54:60:09:e7:69:4e' '192.168.2.52'
+
+static_lease 'phonie'             'b8:27:eb:a8:d1:01' '192.168.2.60'
+
+static_lease 'firetv'             '60:6d:3c:0b:b8:c4' '192.168.2.80'
+static_lease 'printer'            'b4:b5:2f:f5:86:7c' '192.168.2.81'
+static_lease 'voip'               '7c:2f:80:b1:c3:1c' '192.168.2.82'
+static_lease 'phone'              '00:0a:e2:04:0a:b9' '192.168.2.83'
+
+static_lease 'nina-iphone'        '34:ab:37:ed:48:69' '192.168.2.90'
+static_lease 'rene-android'       '94:65:2d:a5:9c:44' '192.168.2.91'
+static_lease 'rts22'              'd2:47:d6:b9:a8:7e' '192.168.2.92'
+
+static_lease 'bolt'               'dc:a6:32:f2:f3:aa' '192.168.2.20'
+
+exit 0
