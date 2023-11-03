@@ -14,8 +14,8 @@ uci -q batch <<-EOF >/dev/null
   set dhcp.switch.start=100
   set dhcp.switch.limit=254
   set dhcp.siwtch.leasetime=24h
-  add_list dhcp.switch.dns=192.168.2.7,192.168.2.8,192.168.2.3
-  add_list dhcp.switch.dhcp_option=6,192.168.2.7,192.168.2.8,192.168.2.3
+  add_list dhcp.switch.dns=192.168.2.7,192.168.2.6,192.168.2.3
+  add_list dhcp.switch.dhcp_option=6,192.168.2.7,192.168.2.6,192.168.2.3
   commit dhcp
 EOF
 
