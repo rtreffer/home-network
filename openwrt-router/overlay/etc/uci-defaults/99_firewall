@@ -104,6 +104,7 @@ config zone
         option forward 'ACCEPT'
         option auto_helper '0'
         list network 'lan'
+        list network 'wg'
 
 config forwarding
         option src 'lan_loop'
