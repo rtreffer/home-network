@@ -1,0 +1,35 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  add_list lldpd.config.interface=lan1
+  add_list lldpd.config.interface=lan2
+  add_list lldpd.config.interface=lan3
+  add_list lldpd.config.interface=lan4
+  add_list lldpd.config.interface=lan5
+  add_list lldpd.config.interface=lan6
+  add_list lldpd.config.interface=lan7
+  add_list lldpd.config.interface=lan8
+  add_list lldpd.config.interface=lan9
+  add_list lldpd.config.interface=lan10
+  add_list lldpd.config.interface=lan11
+  add_list lldpd.config.interface=lan12
+  add_list lldpd.config.interface=lan13
+  add_list lldpd.config.interface=lan14
+  add_list lldpd.config.interface=lan15
+  add_list lldpd.config.interface=lan16
+  add_list lldpd.config.interface=lan17
+  add_list lldpd.config.interface=lan18
+  add_list lldpd.config.interface=lan19
+  add_list lldpd.config.interface=lan20
+  add_list lldpd.config.interface=lan21
+  add_list lldpd.config.interface=lan22
+  add_list lldpd.config.interface=lan23
+  add_list lldpd.config.interface=lan24
+  add_list lldpd.config.interface=lan25
+  add_list lldpd.config.interface=lan26
+  add_list lldpd.config.interface=lan27
+  add_list lldpd.config.interface=lan28
+
+  commit lldpd
+EOF
+
