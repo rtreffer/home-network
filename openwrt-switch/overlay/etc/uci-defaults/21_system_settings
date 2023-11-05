@@ -15,8 +15,14 @@ uci -q batch <<-EOF >/dev/null
   set network.lan6.proto='dhcpv6'
   set network.lan6.ifname='@lan'
   set network.lan6.reqprefix='no'
+  set network.lan6.peerdns='0'
+  set network.lan6.delegate='0'
 
   set network.lan.ipaddr='192.168.2.10'
+  add_list network.lan.dns='192.168.2.3'
+  add_list network.lan.dns='192.168.2.7'
+  add_list network.lan.dns='192.168.2.6'
+
   del network.lan.ip6assign
   commit network
 EOF
