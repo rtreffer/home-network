@@ -75,6 +75,12 @@ uci -q batch <<-EOF >/dev/null
   set dhcp.lan.leasetime=24h
   add_list dns=192.168.2.7,192.168.2.6,192.168.2.3
   add_list dhcp.lan.dhcp_option=6,192.168.2.7,192.168.2.6,192.168.2.3
+
+  set dhcp.lan.ra_default='1'
+  add_list dhcp.lan.dns='fe80::5ad5:6eff:fe1f:77b6'
+  add_list dhcp.lan.dns='fe80::214:4fff:fefc:301'
+  add_list dhcp.lan.dns='fe80::214:4fff:fefc:701'
+  del dhcp.lan.ra_slaac
   commit dhcp
 EOF
 
