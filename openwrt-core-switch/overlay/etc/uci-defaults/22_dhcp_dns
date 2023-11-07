@@ -4,7 +4,23 @@ uci -q batch <<-EOF >/dev/null
   set dhcp.@dnsmasq[0].domain=dhcp.home.measite.de
   set dhcp.@dnsmasq[0].local=/dhcp.home.measite.de/
   set dhcp.@dnsmasq[0].port=5355
+  set dhcp.@dnsmasq[0].enable_tftp='1'
+  set dhcp.@dnsmasq[0].tftp_root='/srv/tftp'
+  set dhcp.@dnsmasq[0].confdir='/etc/dnsmasq.d/'
   add_list dhcp.@dnsmasq[0].interface=lan
+
+  set dhcp.@dnsmasq[0].dhcp_match=set:bios,60,PXEClient:Arch:00000
+  set dhcp.@dnsmasq[0].dhcp_boot=tag:bios,netboot.xyz.kpxe,,192.168.2.6
+  set dhcp.@dnsmasq[0].dhcp_match=set:efi32,60,PXEClient:Arch:00002
+  set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32,netboot.xyz.efi,,192.168.2.6
+  set dhcp.@dnsmasq[0].dhcp_match=set:efi32-1,60,PXEClient:Arch:00006
+  set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32-1,netboot.xyz.efi,,192.168.2.6
+  set dhcp.@dnsmasq[0].dhcp_match=set:efi64,60,PXEClient:Arch:00007
+  set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64,netboot.xyz.efi,,192.168.2.6
+  set dhcp.@dnsmasq[0].dhcp_match=set:efi64-1,60,PXEClient:Arch:00008
+  set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-1,netboot.xyz.efi,,192.168.2.6
+  set dhcp.@dnsmasq[0].dhcp_match=set:efi64-2,60,PXEClient:Arch:00009
+  set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-2,netboot.xyz.efi,,192.168.2.6
 
   delete dhcp.lan
   set dhcp.switch=dhcp
