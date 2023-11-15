@@ -1,0 +1,10 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  set system.ntp.enable_server=1
+  delete system.ntp.server
+  add_list system.ntp.server="de.pool.ntp.org"
+  add_list system.ntp.server="129.6.15.30"
+  add_list system.ntp.server="2610:20:6f15:15::27"
+  commit system
+EOF

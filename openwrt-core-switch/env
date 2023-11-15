@@ -1,2 +1,2 @@
-PACKAGES=-watchcat -kmod-usb-net -kmod-usb-net-cdc-ether -kmod-usb-net-rndis -kmod-usb-net-ipheth dnsmasq unbound-control
+PACKAGES=-watchcat -luci-app-watchcat -kmod-usb-net -kmod-usb-net-cdc-ether -kmod-usb-net-rndis -kmod-usb-net-ipheth dnsmasq unbound-control
 NODE=core-switch

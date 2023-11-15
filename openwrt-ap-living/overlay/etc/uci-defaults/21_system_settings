@@ -10,6 +10,9 @@ uci -q batch <<-EOF >/dev/null
   set network.lan6.proto='dhcpv6'
   set network.lan6.ifname='@lan'
   set network.lan6.reqprefix='no'
+  set network.lan6.delegate=0
+  set network.lan6.reqaddress='try'
+  set network.lan6.ip6assign=64
   commit network
 EOF
 
@@ -17,7 +20,8 @@ uci -q batch <<-EOF >/dev/null
   add_list network.@device[0].ports='wan'
   set network.lan.ipaddr='192.168.2.7'
   set network.lan.macaddr='5C:92:5E:3C:8B:B0'
-  del network.lan.ip6assign
+  set network.lan.delegate=0
+  set network.lan.ip6assign=64
   commit network
 EOF
 

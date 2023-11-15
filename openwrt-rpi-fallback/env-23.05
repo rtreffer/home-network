@@ -1,0 +1,2 @@
+# see https://openwrt.org/docs/guide-user/network/wan/wwan/3gdongle
+PACKAGES_VERSION=tcpdump ethtool kmod-usb-serial-option kmod-usb-serial-wwan kmod-usb-serial kmod-usb-serial-wwan usb-modeswitch luci-proto-3g kmod-usb-net-cdc-ether kmod-usb-net-cdc-mbim kmod-usb-net kmod-mii luci-proto-qmi uqmi umbim kmod-usb-net-rndis comgt-ncm kmod-usb-net-huawei-cdc-ncm luci-proto-ncm

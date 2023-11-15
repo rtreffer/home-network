@@ -1,1 +1,1 @@
-PACKAGES_VERSION=
+PACKAGES_VERSION=-watchcat -luci-app-watchcat
