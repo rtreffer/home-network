@@ -22,25 +22,12 @@ Not adding a device will later on cause issues.
     - 192.168.2.13 - fallback
     - 192.168.2.16 - devnull.local
     - 192.168.2.20 - bolt.local
-    - 192.168.2.21 - kakerlake.local
     - 192.168.2.26 - mqtt.local
     - 192.168.2.27 - RaspberryMatic
     - 192.168.2.28 - prometheus.local
     - 192.168.2.29 - openhab.local
   - 192.168.2.[3456][0-9]: IOT / dhcp static lease
     - 192.168.2.30 - hue-gateway
-    - 192.168.2.31 - power-aquarien
-    - 192.168.2.32 - power-tv-a
-    - 192.168.2.33 - power-tv-b
-    - 192.168.2.34 - power-outdoor
-    - 192.168.2.35 - power-kuehlschrank
-    - 192.168.2.36 - power-3d-druck
-    - 192.168.2.37 - power-tv-c
-    - 192.168.2.38 - power-tv-d
-    - 192.168.2.39 - power-washing
-    - 192.168.2.40 - power-dishwash
-    - 192.168.2.41 - power-beer
-    - 192.168.2.42 - power-printer
     - 192.168.2.48 - sky receiver
     - 192.168.2.49 - harmonyhub
     - 192.168.2.50 - chromecast-living
@@ -50,8 +37,6 @@ Not adding a device will later on cause issues.
   - 192.168.2.[89][0-9]: DHCP/static lease
     - 192.168.2.80 - firetv
     - 192.168.2.81 - printer
-    - 192.168.2.82 - VoIP DECT gateway
-    - 192.168.2.83 - DECT telephone
     - 192.168.2.90 - Nina iPhone
     - 192.168.2.91 - Rene Oneplus 5
   - 192.168.2.100-254: DHCP/dynamic
@@ -67,11 +52,7 @@ Not adding a device will later on cause issues.
   - 192.168.3.7 ap-living
   - 192.168.3.8 ap-guest
 
-192.168.6.0/24 - on the go network
-192.168.7.0/24 - temporary on the go
-
 192.168.9.0/24 - wireguard VPN
-192.168.9.5    - temporaty on the go
 
 # Freifunk
 
@@ -132,18 +113,3 @@ dc:a6:32:f2:f3:aa rpi / bolt
 
 7c:2f:80:b1:c3:1c sky receiver
 f0:27:2d:18:1a:6c FireTV
-00:17:88:0a:68:4a Philips Hue Gatway (1st gen)
-
-ac:84:c6:59:ca:9f TP-Link HS110 WiFi Smart Plug
-50:c7:bf:0b:90:e8 TP-Link HS110 WiFi Smart Plug
-50:c7:bf:0b:88:3b TP-Link HS110 WiFi Smart Plug
-50:c7:bf:0b:8b:b0 TP-Link HS110 WiFi Smart Plug
-50:c7:bf:0b:8d:27 TP-Link HS110 WiFi Smart Plug
-50:c7:bf:28:bd:d9 TP-Link HS110 WiFi Smart Plug
-ac:84:c6:28:fd:53 TP-Link HS110 WiFi Smart Plug
-ac:84:c6:29:16:34 TP-Link HS110 WiFi Smart Plug
-ac:84:c6:5d:9d:3d TP-Link HS110 WiFi Smart Plug
-ac:84:c6:3b:b4:2f TP-Link HS110 WiFi Smart Plug
-ac:84:c6:3b:b1:35 TP-Link HS110 WiFi Smart Plug
-ac:84:c6:29:03:d9 TP-Link HS110 WiFi Smart Plug
-
