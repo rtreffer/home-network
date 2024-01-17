@@ -1,0 +1,12 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+#  set system.check=watchcat
+#  set system.check.period='1h'
+#  set system.check.mode='ping'
+#  set system.check.pinghosts='8.8.8.8'
+#  set system.check.forcedelay='300'
+#  commit system
+EOF
+
+exit 0
