@@ -1,0 +1,2 @@
+PACKAGES=kmod-nvme bind-host bind-dig pciutils bash shadow-chsh luci-app-commands luci-app-diag-core luci-app-irqbalance luci-app-opkg luci-app-qos luci-app-sqm luci-app-upnp luci-proto-wireguard luci-proto-autoip avahi-daemon-service-http openssh-sftp-avahi-service avahi-daemon-service-ssh collectd-mod-cpufreq collectd-mod-thermal sqm-scripts-extra
+NODE=fiberswitch

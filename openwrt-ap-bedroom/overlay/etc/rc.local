@@ -1,12 +1,3 @@
-batctl routing_algo BATMAN_V || :
-ip link add name bat0 type batadv || :
-ip link set dev bat0 up || :
-batctl if add wlan0 || :
-batctl if add wlan1 || :
-batctl gw server || :
-
-ifconfig bat0 192.168.3.5 netmask 255.255.255.0 up
-
 if rm /etc/seccomp/umdns.json; then
   /etc/init.d/umdns restart || true
 fi

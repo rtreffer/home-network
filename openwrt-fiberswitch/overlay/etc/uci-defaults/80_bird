@@ -1,0 +1,121 @@
+#!/bin/sh
+
+addr=$(uci get network.lan.ipaddr)
+source /etc/secrets/env
+
+cat > /etc/bird.conf <<-EOF
+# log syslog all;
+log syslog { info, warning, error, fatal };
+
+router id ${addr};
+
+protocol device {
+        scan time 10;
+}
+
+filter set_krt_metric {
+        if defined( ospf_metric2 ) && ospf_metric2 > 0 && ospf_metric2 < 16777215 then {
+                krt_metric = ospf_metric2;
+        }
+        accept "accepted";
+}
+
+protocol kernel {
+        learn;
+        ipv4 {
+                export all;
+                export filter set_krt_metric;
+                import all;
+                debug all;
+        };
+        scan time 10;
+}
+
+protocol kernel {
+        learn;
+        ipv6 {
+                export all;
+                export filter set_krt_metric;
+                import all;
+                debug all;
+        };
+        scan time 10;
+}
+
+protocol static {
+        ipv4 {
+                export all;
+        };
+}
+
+protocol direct {
+        ipv4 {
+                export all;
+        };
+}
+
+protocol ospf {
+        ipv4 {
+                import all;
+                export all;
+                debug all;
+        };
+
+        area 0 {
+                interface "br-lan" {
+                        cost 10;
+                        type broadcast;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                };
+                interface "switch.1" {
+                        cost 10;
+                        type broadcast;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                };
+
+                interface "wifi*" {
+                        cost 50;
+                        type broadcast;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                };
+
+                interface "wlan*" {
+                        cost 50;
+                        type broadcast;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                };
+
+                interface "bat0" {
+                        cost 51;
+                        type broadcast;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                };
+
+                interface "wg*" {
+                        type ptmp;
+                        tx length 1300;
+                        cost 75;
+                        hello 5; retransmit 2; wait 20; dead 60;
+                        authentication cryptographic; password "${ospf_pass}";
+                        real broadcast;
+                        neighbors {
+                                192.168.9.1;
+                                192.168.9.8;
+                        };
+                };
+
+                interface -"wan*",-"ifwan*","*" {
+                        cost 100;
+                        stub;
+                };
+        };
+}
+EOF
+
+/etc/init.d/bird restart
+/etc/init.d/bird enable

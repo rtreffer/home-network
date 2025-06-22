@@ -1,0 +1,8 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  set irqbalance.irqbalance.enabled='1'
+  set irqbalance.irqbalance.interval='3600'
+  commit irqbalance
+EOF
+

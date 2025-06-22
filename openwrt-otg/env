@@ -1,0 +1,4 @@
+BASE_PACKAGES=-ppp-mod-pppoe -ppp bird1-ipv4 -wpad-basic-wolfssl wpad-basic-openssl kmod-usb-net kmod-usb-net-cdc-ether usbmuxd
+BASE_PACKAGES_VERSION=
+PACKAGES=
+NODE=otg

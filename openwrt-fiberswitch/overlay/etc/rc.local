@@ -1,0 +1,15 @@
+#!/bin/sh
+
+mount -a
+swapon -a
+
+# create symlinks for logs and rdd (persistence)
+for dir in log rrd; do
+  if [ -d "/tmp/${dir}" ] && [ -d "/srv/${dir}" ]; then
+    rm -rf /tmp/${dir}
+    ln -sf /srv/${dir} /tmp/${dir}
+  fi
+done
+
+# save power and reduce heat
+echo "schedutil" | tee /sys/bus/cpu/devices/cpu*/cpufreq/scaling_governor

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  add_list lldpd.config.interface=lan1
+  add_list lldpd.config.interface=lan2
+  add_list lldpd.config.interface=lan3
+  add_list lldpd.config.interface=eth1
+  add_list lldpd.config.interface=wan
+  commit lldpd
+EOF
+

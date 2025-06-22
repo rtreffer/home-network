@@ -1,0 +1,8 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+  set luci_statistics.collectd_rrdtool.DataDir=/srv/rrd
+  set luci_statistics.collectd_dhcpleases.Path=/srv/dhcp/dnsmasq.leases
+  commit luci_statistics
+EOF
+

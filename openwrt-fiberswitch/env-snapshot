@@ -1,0 +1,1 @@
+PACKAGES_VERSION=-bird1 -bird1c -bird1-ipv4 -bird1-ipv4-uci -bird1c-ipv4 bird2 bird2c tcpdump nvme-cli tc-full ip-full luci-app-ddns luci-app-firewall luci-app-nft-qos luci-app-mwan3 luci-app-statistics luci-app-wireguard luci-app-vnstat2 -ethtool ethtool-full redis-server redis-cli

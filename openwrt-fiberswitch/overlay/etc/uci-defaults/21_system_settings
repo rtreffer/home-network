@@ -1,16 +1,8 @@
 #!/bin/sh
 
 uci -q batch <<-EOF >/dev/null
-  set system.@system[0].hostname='core-switch'
+  set system.@system[0].hostname='fiberswitch'
   commit system
-EOF
-
-uci -q batch <<-EOF >/dev/null
-  set network.lan.ipaddr='192.168.2.6'
-  del network.lan.ip6assign 
-  # do not delegate ipv6 networks as we are not the source of any
-  set network.lan.delegate='0'
-  commit network
 EOF
 
 uci -q batch <<-EOF >/dev/null
@@ -20,7 +12,15 @@ uci -q batch <<-EOF >/dev/null
   set network.lan6.reqprefix='no'
   set network.lan6.peerdns='0'
   set network.lan6.delegate='0'
-  set network.lan6.ip6ifaceid='::6'
+
+  set network.globals.packet_steering='1'
+
+  set network.lan.ipaddr='192.168.2.9'
+  add_list network.lan.dns='192.168.2.9'
+  add_list network.lan.dns='192.168.2.7'
+  add_list network.lan.dns='192.168.2.6'
+
+  del network.lan.ip6assign
   commit network
 EOF
 

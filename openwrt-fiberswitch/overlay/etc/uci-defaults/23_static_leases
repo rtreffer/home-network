@@ -1,0 +1,50 @@
+#!/bin/sh
+
+static_lease() {
+  name=$1
+  mac=$(echo "$2"|tr "ABCDEF" "abcdef")
+  ip=$3
+  section=$(echo "${name}"|tr '-' '_')
+uci -q batch <<-EOF >/dev/null
+  set dhcp.${section}=host
+  set dhcp.${section}.name=${name}
+  set dhcp.${section}.mac=${mac}
+  set dhcp.${section}.ip=${ip}
+  commit dhcp
+EOF
+}
+
+static_lease 'bolt'               'dc:a6:32:f2:f3:aa' '192.168.2.20'
+
+static_lease 'hue-gateway'        '00:17:88:a6:55:32' '192.168.2.30'
+
+static_lease 'sky'                 '7c:2f:80:b1:c3:1c' '192.168.2.48'
+static_lease 'harmonyhub'          'c8:db:26:07:09:c2' '192.168.2.49'
+static_lease 'chromecast-living'   '54:60:09:fc:0f:68' '192.168.2.50'
+static_lease 'chromecast-balcony'  '54:60:09:d8:e2:1c' '192.168.2.51'
+static_lease 'chromecast-bathroom' '54:60:09:e7:69:4e' '192.168.2.52'
+
+static_lease 'phonie'             'b8:27:eb:a8:d1:01' '192.168.2.60'
+
+static_lease 'firecube'           '90:f8:2e:17:87:4b' '192.168.2.80'
+static_lease 'printer'            'b4:b5:2f:f5:86:7c' '192.168.2.81'
+static_lease 'airprint'           'b8:27:eb:e7:bd:26' '192.168.2.82'
+static_lease 'xbox'               'A0:85:FC:E4:AA:2A' '192.168.2.84'
+static_lease 'vacuum-roborock'    'B0:4A:39:92:45:6B' '192.168.2.85'
+
+static_lease 'max-amazon-echo'    '84:28:59:ff:b7:4d' '192.168.2.86'
+
+static_lease 'nina-macbook-pro'   'f8:4d:89:74:47:a3' '192.168.2.87'
+static_lease 'rene-framework'     '20:2b:20:d3:85:4f' '192.168.2.88'
+
+static_lease 'nina-iphone'        '34:ab:37:ed:48:69' '192.168.2.90'
+static_lease 'max-minote10'       '20:F4:78:48:17:90' '192.168.2.91'
+static_lease 'rene-s22'           'F0:CD:31:7D:4F:C2' '192.168.2.92'
+
+static_lease 'k8s-node-1'         'D8:3A:DD:07:35:01' '192.168.2.71'
+static_lease 'k8s-node-2'         'D8:3A:DD:07:35:02' '192.168.2.72'
+static_lease 'k8s-control-plane'  'D8:3A:DD:07:35:03' '192.168.2.70'
+static_lease 'k8s-node-4'         'D8:3A:DD:07:35:04' '192.168.2.74'
+
+
+exit 0
