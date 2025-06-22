@@ -1,1 +1,1 @@
-BASE_PACKAGES_VERSION=-unbound-daemon-heavy -wpad-basic-wolfssl -wpad-basic-mbedtls -libustream-mbedtls unbound-daemon unbound-anchor ethtool
+BASE_PACKAGES_VERSION=bird1-ipv4 bird1-ipv4-uci bird1c-ipv4 -unbound-daemon-heavy -wpad-basic-wolfssl -wpad-basic-mbedtls -libustream-mbedtls unbound-daemon unbound-anchor ethtool

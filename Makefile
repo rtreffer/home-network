@@ -8,6 +8,7 @@ $(eval $(call build-sbc-node,mqtt,rpi3,ubuntu-cosmic-arm64))
 # openwrt build container
 $(eval $(call openwrt-build-container,23.05.3,ath79,generic))
 $(eval $(call openwrt-build-container,23.05.3,ramips,mt7621))
+$(eval $(call openwrt-build-container,24.10.1,ramips,mt7621))
 $(eval $(call openwrt-build-container,23.05.3,bcm27xx,bcm2708))
 $(eval $(call openwrt-build-container,23.05.3,bcm27xx,bcm2710))
 $(eval $(call openwrt-build-container,23.05.3,realtek,rtl838x))
@@ -15,7 +16,7 @@ $(eval $(call openwrt-build-container,snapshot,mediatek,filogic))
 
 # openwrt nodes
 $(eval $(call build-node,ap-living,23.05.3,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-bedroom,23.05.3,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-bedroom,24.10.1,ramips,mt7621,totolink_x5000r))
 # $(eval $(call build-node,ap-guest,23.05.3,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-max,23.05.3,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-balcony,23.05.3,ath79,generic,tplink_archer-c7-v2))
