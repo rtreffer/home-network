@@ -18,7 +18,7 @@ $(eval $(call openwrt-build-container,snapshot,mediatek,filogic))
 $(eval $(call build-node,ap-living,24.10.2,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-bedroom,24.10.2,ramips,mt7621,totolink_x5000r))
 # $(eval $(call build-node,ap-guest,23.05.3,ramips,mt7621,totolink_x5000r))
-$(eval $(call build-node,ap-max,23.05.3,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-max,24.10.2,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-balcony,23.05.3,ath79,generic,tplink_archer-c7-v2))
 
 $(eval $(call build-node,switch,23.05.2,ramips,mt7621,ubnt_edgerouter-x))
