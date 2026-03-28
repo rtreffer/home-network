@@ -15,7 +15,7 @@ $(eval $(call openwrt-build-container,23.05.3,realtek,rtl838x))
 $(eval $(call openwrt-build-container,snapshot,mediatek,filogic))
 
 # openwrt nodes
-$(eval $(call build-node,ap-living,25.12.1,ramips,mt7621,totolink_x5000r))
+$(eval $(call build-node,ap-living,25.12.2,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-bedroom,25.12.2,ramips,mt7621,totolink_x5000r))
 $(eval $(call build-node,ap-max,24.10.2,ramips,mt7621,totolink_x5000r))
 
